@@ -23,7 +23,22 @@ public class Room : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GameController.instance.player.SetCurrentRoom(this);
+        }else if (other.tag == "Devil")
+        {
+            GameController.instance.devil.SetCurrentRoom(this);
+        }
+    }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            GameController.instance.player.RemoveRoom(this);
+        }
+        else if (other.tag == "Devil")
+        {
+            GameController.instance.devil.RemoveRoom(this);
         }
     }
 }

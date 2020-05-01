@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     public PlayerController player;
+    public DevilController devil;
 
     void Awake()
     {
