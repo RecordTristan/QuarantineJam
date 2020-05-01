@@ -10,16 +10,20 @@ public class CameraManager2D : MonoBehaviour
     public float speedChangeFocus = 1;
 
     private Camera _cam;
+    private Sequence _anim;
+
     void Awake()
     {
         if (!instance) instance = this;
         else Destroy(gameObject);
 
         _cam = GetComponent<Camera>();
+        _anim = DOTween.Sequence();
     }
 
     public void FocusOnThisCam(GameObject target)
     {
-        _cam.transform.DOMove(target.transform.position, speedChangeFocus).SetEase(Ease.OutExpo);
+        _anim.Kill();
+        _anim.Append(_cam.transform.DOMove(target.transform.position, speedChangeFocus).SetEase(Ease.OutExpo));
     }
 }
