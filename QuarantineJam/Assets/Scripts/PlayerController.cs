@@ -16,7 +16,11 @@ public class PlayerController : MonoBehaviour
     private bool _isOk = false;
     private bool Grab = true;
     public GameObject Object;
-    public Transform objectPos;
+
+    //Grab
+    public Transform objectGrabPos;
+    private GrabObject _grabObjectDetection;
+    private GrabObject _currentGrab;
 
     void Awake()
     {
@@ -47,23 +51,29 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        _currentGrab?.Take(objectGrabPos);
+
+        if (!Input.GetButtonDown("Interact"))
+            return;
+
+        if (_currentGrab)
         {
-            transform.parent = objectPos;
+            _currentGrab.Put();
+            _currentGrab = null;
         }
         else
         {
-            transform.parent = null;
+            _currentGrab = _grabObjectDetection;
         }
 
-        if (!Input.GetButtonDown("Interact"))
-        {
-
-            return;
-        }
-           
     }
 
+    public void GiveObject(GrabObject grabObject)
+    {
+        _grabObjectDetection = grabObject;
+    }
+
+    #region Stair
     private void DisplaceVertical()
     {
         float Vertical = Input.GetAxis("Vertical");
@@ -97,29 +107,5 @@ public class PlayerController : MonoBehaviour
     {
         _stairs = stairs;
     }
-
-    void OnTriggerStay2D(Collider2D collider2D)
-    {
-        
-
-        if (collider2D.gameObject.tag == "GrabItem")
-        {
-
-          
-            GameController.instance.player.GrabObject(this);
-        }
-
-
-    }
-
-    void OnTriggerExit2D(Collider2D collider2D)
-    {
-        if (collider2D.gameObject.tag == "GrabItem")
-        {
-
-            _isOk = false;
-        }
-
-
-    }
+    #endregion
 }
