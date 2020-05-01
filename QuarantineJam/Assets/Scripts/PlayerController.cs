@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +12,11 @@ public class PlayerController : MonoBehaviour
 
     private Stairs _stairs;
     private bool _usedStair = false;
+
+    private bool _isOk = false;
+    private bool Grab = true;
+    public GameObject Object;
+    public Transform objectPos;
 
     void Awake()
     {
@@ -40,16 +47,26 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if (!Input.GetButtonDown("Interact"))
-            return;
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            transform.parent = objectPos;
+        }
+        else
+        {
+            transform.parent = null;
+        }
 
-        //ToDo interact with an object
+        if (!Input.GetButtonDown("Interact"))
+        {
+
+            return;
+        }
+           
     }
 
     private void DisplaceVertical()
     {
         float Vertical = Input.GetAxis("Vertical");
-        Debug.Log(Vertical);
         if (Vertical > -deadZoneVertical && Vertical < deadZoneVertical)
         {
             _usedStair = false;
@@ -79,5 +96,30 @@ public class PlayerController : MonoBehaviour
     public void SetStair(Stairs stairs)
     {
         _stairs = stairs;
+    }
+
+    void OnTriggerStay2D(Collider2D collider2D)
+    {
+        
+
+        if (collider2D.gameObject.tag == "GrabItem")
+        {
+
+          
+            GameController.instance.player.GrabObject(this);
+        }
+
+
+    }
+
+    void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if (collider2D.gameObject.tag == "GrabItem")
+        {
+
+            _isOk = false;
+        }
+
+
     }
 }
