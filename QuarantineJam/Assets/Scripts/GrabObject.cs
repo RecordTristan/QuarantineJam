@@ -16,16 +16,21 @@ public class GrabObject : MonoBehaviour
         {
             bool Grab = false;
         }
+        else
+        {
+            bool Grab = true;
+        }
 
         if (!Grab)
         {
             Object.transform.position = Teleport.position;
+            
             //Grab
         }
         else
         {
 
-            bool _isOk = false;
+            
             //Lacher
         }
     }
@@ -36,6 +41,17 @@ public class GrabObject : MonoBehaviour
         {
 
             bool _isOk = true;
+        }
+
+
+    }
+
+    void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if (collider2D.gameObject.name == "GrabItem")
+        {
+
+            bool _isOk = false;
         }
 
 
