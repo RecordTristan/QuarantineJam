@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
+    public int nbrObjectsToRecup;
 
     private Dictionary<string, GameObject> _objectList = new Dictionary<string, GameObject>();
 
@@ -30,4 +31,9 @@ public class ObjectManager : MonoBehaviour
         return _objectList[nameObject];
     }
     #endregion
+
+    public void GetObjects()
+    {
+
+    }
 }
