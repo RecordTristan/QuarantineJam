@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private float _baseSpeedMove;
     public float deadZoneVertical = 0.5f;
 
-    private Stairs _stairs;
+    private List<Stairs> _stairsList = new List<Stairs>();
     private bool _usedStair = false;
 
     private bool _isOk = false;
@@ -77,16 +75,22 @@ public class PlayerController : MonoBehaviour
     private void DisplaceVertical()
     {
         float Vertical = Input.GetAxis("Vertical");
+        Stairs stairs = null;
+        if (_stairsList.Count >0)
+        {
+            stairs = _stairsList[_stairsList.Count - 1];
+        }
+
         if (Vertical > -deadZoneVertical && Vertical < deadZoneVertical)
         {
             _usedStair = false;
             return;
         }
-        if (!_stairs)
+        if (!stairs)
             return;
-        if (Vertical > 0 && !_stairs.upStair)
+        if (Vertical > 0 && !stairs.upStair)
             return;
-        if (Vertical < 0 && !_stairs.downStair)
+        if (Vertical < 0 && !stairs.downStair)
             return;
         if (_usedStair)
             return;
@@ -95,17 +99,21 @@ public class PlayerController : MonoBehaviour
         //ToDo displace on stairs
         if (Vertical > 0)
         {
-            transform.position = _stairs.upStair.transform.position;
+            transform.position = stairs.upStair.transform.position;
         }
         else
         {
-            transform.position = _stairs.downStair.transform.position;
+            transform.position = stairs.downStair.transform.position;
         }
     }
 
     public void SetStair(Stairs stairs)
     {
-        _stairs = stairs;
+        _stairsList.Add(stairs);
+    }
+    public void ExitStair(Stairs stairs)
+    {
+        _stairsList.Remove(stairs);
     }
     #endregion
 }

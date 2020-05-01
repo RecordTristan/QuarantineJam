@@ -7,6 +7,18 @@ public class Stairs : MonoBehaviour
     public Transform upStair;
     public Transform downStair;
 
+    void Awake()
+    {
+        if (!upStair.gameObject.activeSelf)
+        {
+            upStair = null;
+        }
+        if (!downStair.gameObject.activeSelf)
+        {
+            downStair = null;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -19,7 +31,7 @@ public class Stairs : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameController.instance.player.SetStair(null);
+            GameController.instance.player.ExitStair(this);
         }
     }
 }
