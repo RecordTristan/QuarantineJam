@@ -5,24 +5,28 @@ using UnityEngine;
 
 public class GrabObject : MonoBehaviour 
 {
-    public bool Grab;
+    private bool _isOk = false;
+    public bool Grab = true;
     public GameObject Object;
     public Transform Teleport;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && _isOk)
         {
-            if (!Grab)
-            {
-                Object.transform.position = Teleport.position;
-                //Grab
-            }
-            else
-            { 
+            bool Grab = false;
+        }
 
-                //Lacher
-            }
+        if (!Grab)
+        {
+            Object.transform.position = Teleport.position;
+            //Grab
+        }
+        else
+        {
+
+            bool _isOk = false;
+            //Lacher
         }
     }
 
@@ -31,7 +35,7 @@ public class GrabObject : MonoBehaviour
         if (collider2D.gameObject.name == "GrabItem")
         {
 
-            bool Grab = false;
+            bool _isOk = true;
         }
 
 
