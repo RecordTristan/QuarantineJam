@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class HomeController : MonoBehaviour
 {
@@ -25,5 +26,14 @@ public class HomeController : MonoBehaviour
     public Stairs GetNearDownStair()
     {
         return null;
+    }
+
+    public Room GetRandomRoom(DevilController devil)
+    {
+        Room[] roomsAvailable = rooms.Where(room => room != devil.GetCurrentRoom()).ToArray();
+
+        int rand = UnityEngine.Random.Range(0, roomsAvailable.Length);
+        Debug.Log("Devil go to "+ roomsAvailable[rand].name);
+        return roomsAvailable[rand];
     }
 }
