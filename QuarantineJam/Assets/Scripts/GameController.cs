@@ -13,10 +13,4 @@ public class GameController : MonoBehaviour
         if (instance) Destroy(gameObject);
         else instance = this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
