@@ -17,4 +17,13 @@ public class Room : MonoBehaviour
     {
         
     }
+
+    [System.Obsolete("Give to player")]
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+
+        }
+    }
 }
