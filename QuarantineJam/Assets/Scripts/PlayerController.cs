@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
         _baseSpeedMove = speedMove;
     }
 
+    void Start()
+    {
+        GameController.instance.player = this;
+    }
+
     void Update()
     {
         Move();
