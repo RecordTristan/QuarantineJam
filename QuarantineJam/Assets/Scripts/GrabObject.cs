@@ -5,55 +5,9 @@ using UnityEngine;
 
 public class GrabObject : MonoBehaviour 
 {
-    private bool _isOk = false;
-    public bool Grab = true;
-    public GameObject Object;
-    public Transform Teleport;
+    
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && _isOk)
-        {
-            bool Grab = false;
-        }
-        else
-        {
-            bool Grab = true;
-        }
+    
 
-        if (!Grab)
-        {
-            Object.transform.position = Teleport.position;
-            
-            //Grab
-        }
-        else
-        {
-
-            
-            //Lacher
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collider2D)
-    {
-        if (collider2D.gameObject.name == "GrabItem")
-        {
-
-            bool _isOk = true;
-        }
-
-
-    }
-
-    void OnTriggerExit2D(Collider2D collider2D)
-    {
-        if (collider2D.gameObject.name == "GrabItem")
-        {
-
-            bool _isOk = false;
-        }
-
-
-    }
+    
 }
