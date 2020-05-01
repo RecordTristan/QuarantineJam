@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Stairs : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform upStair;
+    public Transform downStair;
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.tag == "Player")
+        {
+            GameController.instance.player.SetStair(this);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit2D(Collider2D other)
     {
-        
+        if (other.tag == "Player")
+        {
+            GameController.instance.player.SetStair(null);
+        }
     }
 }
