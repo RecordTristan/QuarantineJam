@@ -75,8 +75,11 @@ public class PlayerController : CharacterController
         {
             _currentGrab = _grabObjectDetection;
         }
+    }
 
-     
+    public void Loose()
+    {
+        anim.SetTrigger("Loose");
     }
 
     #region Object

@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
         if (player.GrabOjbect() && player.GetCurrentRoom() == devil.GetCurrentRoom())
         {
             Debug.Log("Loose");
+            player.Loose();
         }
     }
 }
