@@ -5,21 +5,9 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public int level;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    [System.Obsolete("Give to player")]
-    void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -28,9 +16,10 @@ public class Room : MonoBehaviour
         {
             GameController.instance.devil.SetCurrentRoom(this);
         }
+        GameController.instance.CheckDefeat();
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {

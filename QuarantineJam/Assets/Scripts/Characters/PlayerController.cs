@@ -64,10 +64,16 @@ public class PlayerController : CharacterController
 
     }
 
+    #region Object
     public void GiveObject(GrabObject grabObject)
     {
         _grabObjectDetection = grabObject;
     }
+    public bool GrabOjbect()
+    {
+        return _currentGrab ? true : false;
+    }
+    #endregion
 
     #region Stair
     private void DisplaceVertical()

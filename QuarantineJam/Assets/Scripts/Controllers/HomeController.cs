@@ -61,7 +61,7 @@ public class HomeController : MonoBehaviour
 
     public Room GetRandomRoom(DevilController devil)
     {
-        Room[] roomsAvailable = rooms.Where(room => room != devil.GetCurrentRoom()).ToArray();
+        Room[] roomsAvailable = rooms.Where(room => room != devil.GetCurrentRoom() && !(room as Stairs)).ToArray();
 
         int rand = UnityEngine.Random.Range(0, roomsAvailable.Length);
         Debug.Log("Devil go to "+ roomsAvailable[rand].name);

@@ -14,7 +14,11 @@ public class CharacterController : MonoBehaviour
     #region Room
     public Room GetCurrentRoom()
     {
-        return currentRoom[currentRoom.Count-1];
+        if (currentRoom.Count > 0)
+        {
+            return currentRoom[currentRoom.Count - 1];
+        }
+        return null;
     }
     public void SetCurrentRoom(Room room)
     {
