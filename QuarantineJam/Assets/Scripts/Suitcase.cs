@@ -20,6 +20,7 @@ public class Suitcase : GrabObject
 
         if (!objets.Contains(actionGameObject) && actionGameObject != this)
         {
+            actionGameObject.canBeRecup = false;
             actionGameObject.GetComponent<BoxCollider2D>().enabled = false;
             objets.Add(actionGameObject);
             objets.Remove(this);
