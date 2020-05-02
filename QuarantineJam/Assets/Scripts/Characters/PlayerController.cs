@@ -18,6 +18,10 @@ public class PlayerController : CharacterController
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
 
+    [Header("DeplacementInStairs")]
+    protected float currentDeplacement = 0;
+    protected int currentMovement = 0;
+    private Stairs _startVertical;
 
     protected override void Awake()
     {
@@ -124,25 +128,87 @@ public class PlayerController : CharacterController
         }
         if (!stairs)
             return;
-        if (Vertical > 0 && !stairs.upStair)
-            return;
-        if (Vertical < 0 && !stairs.downStair)
-            return;
         if (_usedStair)
             return;
 
-        _usedStair = true;
         //ToDo displace on stairs
         if (Vertical > 0)
         {
-            currentLevel++;
-            transform.position = stairs.upStair.transform.position;
+            if (currentDeplacement >= 1)
+            {
+                currentLevel++;
+                display.transform.localPosition = Vector3.zero;
+                transform.position = stairs.upStair.currentPlacement.transform.position;
+                _usedStair = true;
+                _startVertical = null;
+                currentMovement = 0;
+            }
+            else
+            {
+                if (!_startVertical)
+                {
+                    _startVertical = stairs;
+                }
+                currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length+1);
+                Vector3 positionToGo;
+                if (currentMovement >= _startVertical.displacementPosition.Length)
+                {
+                    positionToGo = _startVertical.upStair.currentPlacement.transform.position;
+                }
+                else
+                {
+                    positionToGo = _startVertical.displacementPosition[currentMovement].transform.position;
+                }
+
+                display.transform.position = Vector3.MoveTowards(
+                        display.transform.position,
+                        positionToGo,
+                        speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
+                if (display.transform.position == positionToGo)
+                {
+                    currentMovement++;
+                }
+            }
         }
         else
         {
-            currentLevel--;
-            transform.position = stairs.downStair.transform.position;
+            
+            if (currentDeplacement <= 0)
+            {
+                currentLevel--;
+                display.transform.localPosition = Vector3.zero;
+                transform.position = _startVertical.currentPlacement.transform.position;
+                _usedStair = true;
+                currentMovement = 0;
+                _startVertical = null;
+            }
+            else
+            {
+                if (!_startVertical)
+                {
+                    _startVertical = stairs.downStair;
+                    currentMovement = _startVertical.displacementPosition.Length;
+                }
+                currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length + 1);
+                Vector3 positionToGo;
+                if (currentMovement <= 0)
+                {
+                    positionToGo = _startVertical.currentPlacement.transform.position;
+                }
+                else
+                {
+                    positionToGo = _startVertical.displacementPosition[currentMovement-1].transform.position;
+                }
 
+                display.transform.position = Vector3.MoveTowards(
+                        display.transform.position,
+                        positionToGo,
+                        speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
+                if (display.transform.position == positionToGo)
+                {
+                    currentMovement--;
+                }
+            }
         }
     }
 

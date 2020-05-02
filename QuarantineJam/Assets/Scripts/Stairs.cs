@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Stairs : Room
 {
-    public Transform upStair;
-    public Transform downStair;
+    public Stairs upStair;
+    public Transform currentPlacement;
+    public Stairs downStair;
+    public Transform[] displacementPosition;
 
     public SpriteRenderer display;
     private Material _mat;
@@ -20,26 +22,12 @@ public class Stairs : Room
         {
             _mat = GetComponent<SpriteRenderer>().material;
         }
-        if (!upStair.gameObject.activeSelf)
-        {
-            upStair = null;
-        }
-        else
-        {
-            upStair.position = new Vector3(upStair.position.x, 
-                LDController.instance.levelValue[level + 1], 
-                upStair.position.z);
-        }
-        if (!downStair.gameObject.activeSelf)
-        {
-            downStair = null;
-        }
-        else
-        {
-            downStair.position = new Vector3(downStair.position.x,
-                LDController.instance.levelValue[level - 1],
-                downStair.position.z);
-        }
+
+        currentPlacement.transform.position = new Vector3(
+            currentPlacement.transform.position.x,
+            LDController.instance.levelValue[level],
+            currentPlacement.transform.position.z);
+
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
