@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using System.Configuration;
 using UnityEngine;
+using DG.Tweening;
 
 public class GrabObject : MonoBehaviour 
 {
     public string nameGrabObject;
+    public float speedFollow = 2;
     private Material _mat;
+
+    private Sequence _anim;
 
     void Awake()
     {
         _mat = GetComponent<SpriteRenderer>().material;
-
+        _anim = DOTween.Sequence();
     }
 
     public virtual void UseObject(GameObject actionGameObject)
@@ -28,11 +32,14 @@ public class GrabObject : MonoBehaviour
 
     public void Take(Transform targetPos)
     {
-        transform.position = targetPos.position;
+        _anim.Kill();
+        transform.position = Vector3.Lerp(transform.position, targetPos.position, speedFollow*Time.deltaTime);
     }
 
-    public void Put()
+    public void Put(int level)
     {
-
+        _anim.Kill();
+        _anim = DOTween.Sequence()
+            .Append(transform.DOMoveY(LDController.instance.levelValue[level],0.3f).SetEase(Ease.OutExpo));
     }
 }

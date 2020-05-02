@@ -85,7 +85,7 @@ public class PlayerController : CharacterController
         if (_currentGrab)
         {
             _grabObjectDetection?.UseObject(_currentGrab.gameObject);
-            _currentGrab.Put();
+            _currentGrab.Put(currentLevel);
             _currentGrab = null;
         }
         else
@@ -148,9 +148,14 @@ public class PlayerController : CharacterController
                 _startVertical = null;
                 currentDeplacement = 0.5f;
                 _collider.enabled = true;
+                canMove = true;
+                Physics2D.IgnoreLayerCollision(9, 10, false);
+
             }
             else
             {
+                Physics2D.IgnoreLayerCollision(9, 10,true);
+                canMove = false;
                 MoveUpStair(stairs);
             }
         }
@@ -166,9 +171,13 @@ public class PlayerController : CharacterController
                 _usedStair = true;
                 currentDeplacement = 0.5f;
                 _collider.enabled = true;
+                canMove = true;
+                Physics2D.IgnoreLayerCollision(9, 10, false);
             }
             else
             {
+                Physics2D.IgnoreLayerCollision(9, 10, true);
+                canMove = false;
                 MoveDownStair(stairs);
             }
         }
@@ -178,7 +187,7 @@ public class PlayerController : CharacterController
         if (!_startVertical)
         {
             _startVertical = stairs;
-            _collider.enabled = !_startVertical.needToGhost;
+            //_collider.enabled = !_startVertical.needToGhost;
             CameraManager2D.instance.StairMovement(currentLevel+1);
         }
         currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length + 1);
@@ -218,7 +227,7 @@ public class PlayerController : CharacterController
         {
             _startVertical = stairs.downStair;
             currentMovement = _startVertical.displacementPosition.Length;
-            _collider.enabled = !_startVertical.needToGhost;
+            //_collider.enabled = !_startVertical.needToGhost;
 
             CameraManager2D.instance.StairMovement(currentLevel - 1);
         }

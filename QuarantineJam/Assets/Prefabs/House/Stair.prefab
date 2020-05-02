@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  upStair: {fileID: 0}
+  upStair: {fileID: 2063391816882095782}
   currentPlacement: {fileID: 4709213561078635838}
   downStair: {fileID: 0}
   displacementPosition:

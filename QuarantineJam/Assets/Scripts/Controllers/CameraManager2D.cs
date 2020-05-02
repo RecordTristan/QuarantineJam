@@ -29,25 +29,15 @@ public class CameraManager2D : MonoBehaviour
     {
         if (_positionStair == Vector3.zero)
             return;
-
-        //if (_percent > GameController.instance.player.GetCurrentPercentStair())
-        //{
-        //    _percent -= Time.deltaTime;
-        //}
-        //else if(_percent < GameController.instance.player.GetCurrentPercentStair())
-        //{
-        //    _percent += Time.deltaTime;
-        //}
-
-        //_cam.transform.position = Vector3.Lerp(_targetPos, _positionStair, _percent);
     }
 
     public void FocusOnThisCam(GameObject target)
     {
         _anim.Kill();
         _targetPos = target.transform.position;
+
         _anim = DOTween.Sequence()
-            .Append(_cam.transform.DOMove(target.transform.position, speedChangeFocus).SetEase(Ease.OutExpo));
+            .Append(_cam.transform.DOMove(target.transform.position, speedChangeFocus ).SetEase(Ease.OutExpo));
         _positionStair = Vector3.zero;
     }
 
