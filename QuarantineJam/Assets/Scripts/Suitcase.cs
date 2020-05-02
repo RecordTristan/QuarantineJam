@@ -34,10 +34,7 @@ public class Suitcase : GrabObject
             {
                 weight = 1;
             }
-        }
-
-        GameController.instance.CheckWin(objets);
-        
+        }        
     }
     
 }

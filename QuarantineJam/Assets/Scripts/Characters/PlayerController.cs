@@ -11,6 +11,8 @@ public class PlayerController : CharacterController
     private bool _usedStair = false;
     private BoxCollider2D _collider;
 
+    public Animation winAnim;
+
     //Grab
     [Header("Levitation")]
     public float limitLevitation = 2;
@@ -104,7 +106,15 @@ public class PlayerController : CharacterController
 
     public void Loose()
     {
+        if (GameController.instance.isEnd)
+            return;
         anim.SetTrigger("Loose");
+        canMove = false;
+    }
+    public void Win()
+    {
+        anim.SetTrigger("Win");
+        winAnim.Play();
         canMove = false;
     }
 

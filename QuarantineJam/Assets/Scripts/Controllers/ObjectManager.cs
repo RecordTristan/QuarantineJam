@@ -7,6 +7,8 @@ public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
 
+    public Suitcase suitcase;
+
     private Dictionary<string, GrabObject> _objectList = new Dictionary<string, GrabObject>();
 
     void Awake()
@@ -20,6 +22,10 @@ public class ObjectManager : MonoBehaviour
             if (!(objectsIG[i] as Suitcase))
             {
                 AddObject(objectsIG[i]);
+            }
+            else
+            {
+                suitcase = objectsIG[i] as Suitcase;
             }
         }
     }

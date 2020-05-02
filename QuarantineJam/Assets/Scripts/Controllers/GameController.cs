@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [Header("WinCondition")]
     public List<GrabObject> winItems = new List<GrabObject>();
     public int nbrObjectsToRecup;
+    public bool isEnd = false;
 
     void Awake()
     {
@@ -33,12 +34,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void CheckWin(List<GrabObject> objectInSuitCase)
+    public void CheckWin()
     {
-        List<GrabObject> compareToListFinish = winItems.Where(i => objectInSuitCase.Contains(i)).ToList();
+        List<GrabObject> compareToListFinish = winItems.Where(i => ObjectManager.instance.suitcase.objets.Contains(i)).ToList();
 
+        Debug.Log(compareToListFinish.Count+"   "+ winItems.Count);
         if (compareToListFinish.Count == winItems.Count)
         {
+            player.Win();
             Debug.Log("Win");
             //chekWin;
         }
