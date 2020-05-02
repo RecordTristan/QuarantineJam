@@ -15,6 +15,7 @@ public class DevilController : CharacterController
     public float timeToUseStair;
     public float timeActionRoom;
     public float timeActionEvent;
+    public float timeToHappenDevil;
 
     private int _stairUse = 0;
 
@@ -26,10 +27,13 @@ public class DevilController : CharacterController
     private bool _waitCoffe = false;
     private bool _waitJournal = false;
     private bool _eventFailed = false;
+
+    public Animation animHappenDevil;
     // Start is called before the first frame update
     void Start()
     {
         GameController.instance.devil = this;
+        StartCoroutine(HappenDevil());
     }
 
     void Update()
@@ -175,6 +179,16 @@ public class DevilController : CharacterController
         _eventFailed = true;
         _eventIsReady = true;
         //_objectiveEvent = null;
+        yield break;
+    }
+
+    private IEnumerator HappenDevil()
+    {
+        
+
+        yield return new WaitForSeconds(timeToHappenDevil);
+        this.gameObject.SetActive(true);
+        animHappenDevil.Play();
         yield break;
     }
 
