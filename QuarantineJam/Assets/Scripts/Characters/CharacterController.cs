@@ -9,27 +9,51 @@ public class CharacterController : MonoBehaviour
     protected List<Room> currentRoom = new List<Room>();
     protected List<Stairs> stairsList = new List<Stairs>();
 
+    protected int currentLevel = 0;
 
+    #region Room
     public Room GetCurrentRoom()
     {
         return currentRoom[currentRoom.Count-1];
     }
     public void SetCurrentRoom(Room room)
     {
+        currentLevel = room.level;
         currentRoom.Add(room);
     }
     public void RemoveRoom(Room room)
     {
         currentRoom.Remove(room);
     }
+    #endregion
 
-
+    #region Stairs
+    public Stairs GetStairs()
+    {
+        for (int i = stairsList.Count; i-- > 0;)
+        {
+            if (stairsList[i].level != currentLevel)
+            {
+                stairsList.RemoveAt(i);
+            }
+        }
+        if (stairsList.Count > 0)
+        {
+            return stairsList[stairsList.Count - 1];
+        }
+        return null;
+    }
     public void SetStair(Stairs stairs)
     {
+        if (stairs.level != currentLevel || stairsList.Contains(stairs))
+        {
+            return;
+        }
         stairsList.Add(stairs);
     }
     public void ExitStair(Stairs stairs)
     {
         stairsList.Remove(stairs);
     }
+    #endregion
 }

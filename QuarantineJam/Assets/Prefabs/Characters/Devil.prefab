@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 3160764951387236767}
   - component: {fileID: 3160764951387236765}
   - component: {fileID: 6962710740653276311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Devil
-  m_TagString: Untagged
+  m_TagString: Devil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,3 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMove: 4
+  distanceTarget: 0.2
+  timeToUseStair: 0
+  timeActionRoom: 0

@@ -73,11 +73,7 @@ public class PlayerController : CharacterController
     private void DisplaceVertical()
     {
         float Vertical = Input.GetAxis("Vertical");
-        Stairs stairs = null;
-        if (stairsList.Count >0)
-        {
-            stairs = stairsList[stairsList.Count - 1];
-        }
+        Stairs stairs = GetStairs();
 
         if (Vertical > -deadZoneVertical && Vertical < deadZoneVertical)
         {
@@ -97,11 +93,14 @@ public class PlayerController : CharacterController
         //ToDo displace on stairs
         if (Vertical > 0)
         {
+            currentLevel++;
             transform.position = stairs.upStair.transform.position;
         }
         else
         {
+            currentLevel--;
             transform.position = stairs.downStair.transform.position;
+
         }
     }
 

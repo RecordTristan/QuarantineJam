@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Stairs : MonoBehaviour
 {
+    public int level;
+
     public Transform upStair;
     public Transform downStair;
 
@@ -25,6 +27,10 @@ public class Stairs : MonoBehaviour
         {
             GameController.instance.player.SetStair(this);
         }
+        else if (other.tag == "Devil")
+        {
+            GameController.instance.devil.SetStair(this);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -32,6 +38,10 @@ public class Stairs : MonoBehaviour
         if (other.tag == "Player")
         {
             GameController.instance.player.ExitStair(this);
+        }
+        else if (other.tag == "Devil")
+        {
+            GameController.instance.devil.SetStair(this);
         }
     }
 }
