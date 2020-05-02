@@ -9,6 +9,7 @@ public class GrabObject : MonoBehaviour
     public string nameGrabObject;
     public float speedFollow = 2;
     public bool canBeRecup = true;
+    public float weight;
     private Material _mat;
 
     private Sequence _anim;

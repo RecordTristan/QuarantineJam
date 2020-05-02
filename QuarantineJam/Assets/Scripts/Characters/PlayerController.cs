@@ -87,10 +87,12 @@ public class PlayerController : CharacterController
             _grabObjectDetection?.UseObject(_currentGrab);
             _currentGrab.Put(currentLevel);
             _currentGrab = null;
+            speedMove = _baseSpeedMove;
         }
         else
         {
             _currentGrab = _grabObjectDetection;
+            speedMove = _baseSpeedMove / _currentGrab.weight;
         }
     }
 

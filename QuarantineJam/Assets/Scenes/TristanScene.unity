@@ -278,6 +278,11 @@ PrefabInstance:
       propertyPath: nameGrabObject
       value: Newspaper
       objectReference: {fileID: 0}
+    - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
+        type: 3}
+      propertyPath: weight
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -620,6 +625,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
+        type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -719,6 +729,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nameGrabObject
       value: Horloge
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
+        type: 3}
+      propertyPath: weight
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
@@ -873,6 +888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475319352303467708, guid: fe8f1c6c1a61d4740bceaa63ba94f109,
+        type: 3}
+      propertyPath: weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe8f1c6c1a61d4740bceaa63ba94f109, type: 3}
@@ -1295,6 +1315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nameGrabObject
       value: Peluche
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
+        type: 3}
+      propertyPath: weight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
