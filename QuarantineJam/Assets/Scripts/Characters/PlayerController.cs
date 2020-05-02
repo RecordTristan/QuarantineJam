@@ -9,18 +9,17 @@ public class PlayerController : CharacterController
 
     private bool _usedStair = false;
 
-    private bool _isOk = false;
-    private bool Grab = true;
-    public GameObject Object;
-
     //Grab
     public Transform objectGrabPos;
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
 
-    void Awake()
+
+    protected override void Awake()
     {
+        base.Awake();
         _baseSpeedMove = speedMove;
+        canMove = true;
     }
 
     void Start()
@@ -40,7 +39,24 @@ public class PlayerController : CharacterController
         float Horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * speedMove;
 
         if (Horizontal == 0)
+        {
+            anim.SetBool("Walk", false);
             return;
+        }
+        if (!canMove)
+            return;
+
+        anim.SetBool("Walk", true);
+        if (Horizontal > 0)
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(-scale, scale, scale);
+        }
 
         transform.Translate(Horizontal, 0, 0);
     }
@@ -52,8 +68,11 @@ public class PlayerController : CharacterController
         if (!Input.GetButtonDown("Interact"))
             return;
 
+        anim.SetTrigger("TakeObject");
+
         if (_currentGrab)
         {
+            _grabObjectDetection?.UseObject(_currentGrab.gameObject);
             _currentGrab.Put();
             _currentGrab = null;
         }
@@ -61,14 +80,27 @@ public class PlayerController : CharacterController
         {
             _currentGrab = _grabObjectDetection;
         }
-
     }
 
+    public void Loose()
+    {
+        anim.SetTrigger("Loose");
+        canMove = false;
+    }
+
+    #region Object
     public void GiveObject(GrabObject grabObject)
     {
         _grabObjectDetection = grabObject;
     }
+    public bool GrabOjbect()
+    {
+        return _currentGrab ? true : false;
+    }
+    #endregion
 
+
+    
     #region Stair
     private void DisplaceVertical()
     {

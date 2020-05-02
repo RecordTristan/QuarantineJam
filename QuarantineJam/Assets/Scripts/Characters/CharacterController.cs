@@ -11,10 +11,25 @@ public class CharacterController : MonoBehaviour
 
     protected int currentLevel = 0;
 
+    protected bool canMove = false;
+
+    protected SpriteRenderer display;
+    protected Animator anim;
+
+    protected virtual void Awake()
+    {
+        display = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+    }
+
     #region Room
     public Room GetCurrentRoom()
     {
-        return currentRoom[currentRoom.Count-1];
+        if (currentRoom.Count > 0)
+        {
+            return currentRoom[currentRoom.Count - 1];
+        }
+        return null;
     }
     public void SetCurrentRoom(Room room)
     {

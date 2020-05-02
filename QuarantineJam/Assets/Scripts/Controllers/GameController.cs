@@ -14,4 +14,13 @@ public class GameController : MonoBehaviour
         if (instance) Destroy(gameObject);
         else instance = this;
     }
+
+    public void CheckDefeat()
+    {
+        if (player.GrabOjbect() && player.GetCurrentRoom() == devil.GetCurrentRoom())
+        {
+            Debug.Log("Loose");
+            player.Loose();
+        }
+    }
 }

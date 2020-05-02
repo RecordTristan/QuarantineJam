@@ -6,15 +6,19 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour 
 {
     public string nameGrabObject;
-
     private Material _mat;
 
     void Awake()
     {
         _mat = GetComponent<SpriteRenderer>().material;
+
     }
-    
-    void OnTriggerEnter2D(Collider2D other)
+
+    public virtual void UseObject(GameObject actionGameObject)
+    {
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {

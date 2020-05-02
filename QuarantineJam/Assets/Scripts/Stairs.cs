@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stairs : MonoBehaviour
+public class Stairs : Room
 {
-    public int level;
-
     public Transform upStair;
     public Transform downStair;
 
+    public SpriteRenderer display;
     private Material _mat;
 
     void Start()
     {
-        _mat = GetComponent<SpriteRenderer>().material;
+        if (display)
+        {
+            _mat = display.material;
+        }
+        else
+        {
+            _mat = GetComponent<SpriteRenderer>().material;
+        }
         if (!upStair.gameObject.activeSelf)
         {
             upStair = null;
@@ -36,8 +42,9 @@ public class Stairs : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
+        base.OnTriggerEnter2D(other);
         if (other.tag == "Player")
         {
             GameController.instance.player.SetStair(this);
@@ -50,8 +57,10 @@ public class Stairs : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    protected override void OnTriggerExit2D(Collider2D other)
     {
+        base.OnTriggerExit2D(other);
+
         if (other.tag == "Player")
         {
             GameController.instance.player.ExitStair(this);
