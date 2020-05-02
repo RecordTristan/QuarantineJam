@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : CharacterController
 {
-    public float speedMove = 4;
     private float _baseSpeedMove;
     public float deadZoneVertical = 0.5f;
 
-    private Stairs _stairs;
     private bool _usedStair = false;
 
     //Grab
@@ -18,10 +14,9 @@ public class PlayerController : MonoBehaviour
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
 
-  
-
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _baseSpeedMove = speedMove;
     }
 
@@ -42,7 +37,21 @@ public class PlayerController : MonoBehaviour
         float Horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * speedMove;
 
         if (Horizontal == 0)
+        {
+            anim.SetBool("Walk", false);
             return;
+        }
+        anim.SetBool("Walk", true);
+        if (Horizontal > 0)
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(-scale, scale, scale);
+        }
 
         transform.Translate(Horizontal, 0, 0);
     }
@@ -53,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
         if (!Input.GetButtonDown("Interact"))
             return;
+
+        anim.SetTrigger("TakeObject");
 
         if (_currentGrab)
         {
@@ -68,10 +79,16 @@ public class PlayerController : MonoBehaviour
      
     }
 
+    #region Object
     public void GiveObject(GrabObject grabObject)
     {
         _grabObjectDetection = grabObject;
     }
+    public bool GrabOjbect()
+    {
+        return _currentGrab ? true : false;
+    }
+    #endregion
 
 
     
@@ -79,16 +96,18 @@ public class PlayerController : MonoBehaviour
     private void DisplaceVertical()
     {
         float Vertical = Input.GetAxis("Vertical");
+        Stairs stairs = GetStairs();
+
         if (Vertical > -deadZoneVertical && Vertical < deadZoneVertical)
         {
             _usedStair = false;
             return;
         }
-        if (!_stairs)
+        if (!stairs)
             return;
-        if (Vertical > 0 && !_stairs.upStair)
+        if (Vertical > 0 && !stairs.upStair)
             return;
-        if (Vertical < 0 && !_stairs.downStair)
+        if (Vertical < 0 && !stairs.downStair)
             return;
         if (_usedStair)
             return;
@@ -97,17 +116,17 @@ public class PlayerController : MonoBehaviour
         //ToDo displace on stairs
         if (Vertical > 0)
         {
-            transform.position = _stairs.upStair.transform.position;
+            currentLevel++;
+            transform.position = stairs.upStair.transform.position;
         }
         else
         {
-            transform.position = _stairs.downStair.transform.position;
+            currentLevel--;
+            transform.position = stairs.downStair.transform.position;
+
         }
     }
 
-    public void SetStair(Stairs stairs)
-    {
-        _stairs = stairs;
-    }
+    
     #endregion
 }
