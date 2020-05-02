@@ -194,12 +194,12 @@ public class DevilController : CharacterController
     {
         if (_waitCoffe && other.tag == "Coffe")
         {
-            _coffeGood;
+            _coffeGood = true;
         }
         
         if (_waitJournal && other.tag == "Journal")
         {
-            _journalGood;
+            _journalGood = true;
         }
     }
     
