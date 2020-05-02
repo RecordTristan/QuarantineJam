@@ -119,6 +119,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameGrabObject: Disc
   speedFollow: 2
+  canBeRecup: 1
+  weight: 0
+  takeObject: {fileID: 0}
+  putObject: {fileID: 8300000, guid: d1687cfcf0ff8e94f8eb783c072045bf, type: 3}
 --- !u!61 &1688164174896630080
 BoxCollider2D:
   m_ObjectHideFlags: 0

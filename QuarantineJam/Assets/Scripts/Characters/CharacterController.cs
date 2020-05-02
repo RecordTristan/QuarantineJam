@@ -6,6 +6,10 @@ public class CharacterController : MonoBehaviour
 {
     public float speedMove = 4;
 
+    [Header("Sounds")]
+    public AudioClip[] walkInHouse;
+    public AudioClip[] walkOutHouse;
+
     protected List<Room> currentRoom = new List<Room>();
     protected List<Stairs> stairsList = new List<Stairs>();
 
@@ -20,6 +24,25 @@ public class CharacterController : MonoBehaviour
     {
         display = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
+    }
+
+    public void SoundStep()
+    {
+        if (GetStairs())
+        {
+            if (GetStairs().needToGhost)
+            {
+                SoundController.instance.PlaySFX(walkOutHouse);
+            }
+            else
+            {
+                SoundController.instance.PlaySFX(walkInHouse);
+            }
+        }
+        else
+        {
+            SoundController.instance.PlaySFX(walkInHouse);
+        }
     }
 
     #region Room

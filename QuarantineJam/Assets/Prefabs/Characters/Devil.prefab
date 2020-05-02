@@ -176,6 +176,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMove: 4
+  walkInHouse:
+  - {fileID: 8300000, guid: df0eb1271d19a9c45a7c88948756de32, type: 3}
+  - {fileID: 8300000, guid: 04eb82e90976c2b40b2fd973f98e8880, type: 3}
+  walkOutHouse:
+  - {fileID: 8300000, guid: 8ea11fe2fed8384499db947d8b8b26dc, type: 3}
+  - {fileID: 8300000, guid: d2e6fa8dbe648bb479befd9d7d79775c, type: 3}
   distanceTarget: 0.2
   timeToUseStair: 0
   timeActionRoom: 0
+  timeActionEvent: 0

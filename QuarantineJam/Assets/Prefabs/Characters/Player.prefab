@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 5716189714271412028}
   - component: {fileID: 5716189714271412029}
   - component: {fileID: 6931741759206628447}
+  - component: {fileID: 3838183091900476307}
   m_Layer: 0
   m_Name: Display
   m_TagString: Untagged
@@ -133,6 +134,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3838183091900476307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5716189714271412031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7c6e10722e2c043a036c817256f3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 5716189714549473830}
 --- !u!1 &5716189714549473824
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +242,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMove: 4
+  walkInHouse:
+  - {fileID: 8300000, guid: cb95e3c5865de5e4a8b74a7c75929ac5, type: 3}
+  - {fileID: 8300000, guid: cb995cba5cd3aab49bbc53b3f718163d, type: 3}
+  - {fileID: 8300000, guid: 5ca08760d52f96e459020bc5478fbb9b, type: 3}
+  - {fileID: 8300000, guid: 2d0360a3eca458e418aa096c873087b3, type: 3}
+  walkOutHouse:
+  - {fileID: 8300000, guid: 9715b5531d541984d995502bd9e5fc1f, type: 3}
+  - {fileID: 8300000, guid: d2797f149c61467439e924c915e210f2, type: 3}
+  - {fileID: 8300000, guid: d52713aa71cdfeb4bbf01152657f5fd6, type: 3}
+  - {fileID: 8300000, guid: 012d1030d0eaa5f418c28c88c14d4f53, type: 3}
   deadZoneVertical: 0.5
+  winAnim: {fileID: 0}
   limitLevitation: 0.2
   speedLevitation: 2
   objectGrabPos: {fileID: 2784246549917752393}

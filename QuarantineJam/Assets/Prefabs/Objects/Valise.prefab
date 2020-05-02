@@ -123,4 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameGrabObject: 
   speedFollow: 2
+  canBeRecup: 1
+  weight: 0
+  takeObject: {fileID: 8300000, guid: 2760c8bbe21ce7f438e88d2bd521b6b2, type: 3}
+  putObject: {fileID: 8300000, guid: c5ac6220b055ada40853e05027663e27, type: 3}
   objets: []
+  multiplyWeight: 2

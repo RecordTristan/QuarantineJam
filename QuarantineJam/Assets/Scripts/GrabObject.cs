@@ -15,6 +15,12 @@ public class GrabObject : MonoBehaviour
     private Sequence _anim;
     protected BoxCollider2D colliderOfObject;
 
+    [Header("Sounds")]
+    public AudioClip takeObject;
+    public AudioClip putObject;
+
+    private bool _take = false;
+
     void Awake()
     {
         _mat = GetComponent<SpriteRenderer>().material;
@@ -44,6 +50,11 @@ public class GrabObject : MonoBehaviour
 
     public void Take(Transform targetPos)
     {
+        if (!_take)
+        {
+            _take = true;
+            SoundController.instance.PlaySFX(takeObject);
+        }
         _anim.Kill();
         transform.position = Vector3.Lerp(transform.position, targetPos.position, speedFollow*Time.deltaTime);
         colliderOfObject.enabled = false;
@@ -51,6 +62,11 @@ public class GrabObject : MonoBehaviour
 
     public void Put(int level)
     {
+        if (_take)
+        {
+            _take = false;
+            SoundController.instance.PlaySFX(putObject);
+        }
         colliderOfObject.enabled = true;
         _anim.Kill();
         _anim = DOTween.Sequence()

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : CharacterController
 {
+
+    [Header("Settings")]
     private float _baseSpeedMove;
     public float deadZoneVertical = 0.5f;
 

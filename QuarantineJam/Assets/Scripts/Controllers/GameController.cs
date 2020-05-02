@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public int nbrObjectsToRecup;
     public bool isEnd = false;
 
+    [Header("Sounds")]
+    public AudioClip gameOver;
+
     void Awake()
     {
         if (instance) Destroy(gameObject);
