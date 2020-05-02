@@ -9,8 +9,11 @@ public class Stairs : MonoBehaviour
     public Transform upStair;
     public Transform downStair;
 
+    private Material _mat;
+
     void Start()
     {
+        _mat = GetComponent<SpriteRenderer>().material;
         if (!upStair.gameObject.activeSelf)
         {
             upStair = null;
@@ -38,6 +41,8 @@ public class Stairs : MonoBehaviour
         if (other.tag == "Player")
         {
             GameController.instance.player.SetStair(this);
+            _mat.SetFloat("_Outline", 0.02f);
+
         }
         else if (other.tag == "Devil")
         {
@@ -50,10 +55,20 @@ public class Stairs : MonoBehaviour
         if (other.tag == "Player")
         {
             GameController.instance.player.ExitStair(this);
+            _mat.SetFloat("_Outline", 0f);
         }
         else if (other.tag == "Devil")
         {
             GameController.instance.devil.SetStair(this);
         }
+    }
+
+    public void Enter()
+    {
+        //_mat.SetFloat("_Outline", 0.02f);
+    }
+    public void Leave()
+    {
+        //_mat.SetFloat("_Outline", 0f);
     }
 }
