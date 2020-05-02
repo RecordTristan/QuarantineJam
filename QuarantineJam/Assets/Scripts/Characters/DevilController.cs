@@ -29,6 +29,8 @@ public class DevilController : CharacterController
     private bool _eventFailed = false;
 
     public Animation animHappenDevil;
+
+    private float _xValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,24 @@ public class DevilController : CharacterController
 
     void Update()
     {
+        if (transform.position.x > _xValue)
+        {
+            anim.SetBool("Walk", true);
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(scale,scale,scale);
+        }
+        else if (transform.position.x < _xValue)
+        {
+            anim.SetBool("Walk", true);
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(-scale, scale, scale);
+        }
+        else
+        {
+            anim.SetBool("Walk", false);
+        }
+        _xValue = transform.position.x;
+
         if (_objectiveRoom)
         {
             if (!canMove)
@@ -142,7 +162,7 @@ public class DevilController : CharacterController
             positionTrans.Reverse();
         }
         currentLevel += _stairUse;
-        transform.DOPath(positionTrans.ToArray(), speedMove).SetSpeedBased(true).OnComplete(()=> {
+        transform.DOPath(positionTrans.ToArray(), speedMove).SetSpeedBased(false).OnComplete(()=> {
             _stairUse = 0;
             _targetPosition = Vector3.zero;
             canMove = true;

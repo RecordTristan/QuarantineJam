@@ -2191,6 +2191,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3331640935227144947, guid: c5df76a0939c6c6409aac75f2a5d4772,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 71ce3c3ef0b5bca479ca9e4debc81fdb, type: 2}
     - target: {fileID: 6962710740653276311, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}
       propertyPath: distanceTarget
