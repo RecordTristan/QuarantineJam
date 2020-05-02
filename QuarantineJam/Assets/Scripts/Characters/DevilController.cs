@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class DevilController : CharacterController
@@ -20,6 +21,11 @@ public class DevilController : CharacterController
     private Event _objectiveEvent;
     private bool _canEvent = false;
     private bool _eventIsReady = true;
+    private bool _coffeGood = false;
+    private bool _journalGood = false;
+    private bool _waitCoffe = false;
+    private bool _waitJournal = false;
+    private bool _eventFailed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +100,20 @@ public class DevilController : CharacterController
         {
             StartCoroutine(MakeEvent()); 
         }
+
+        if (_canEvent)
+        {
+            if (_coffeGood || _journalGood)
+            {
+                Debug.Log("Event Win");
+            }
+            else if(_eventFailed)
+            {
+                //defeat
+                Debug.Log("Event Defeat");
+            }
+
+        }
         
     }
 
@@ -135,11 +155,17 @@ public class DevilController : CharacterController
         
         _canEvent = false;
         _eventIsReady = false;
+        _coffeGood = false;
+        _journalGood = false;
+        _waitCoffe = false;
+        _waitJournal = false;
+        _eventFailed = false;
         //random temps event
         yield return new WaitForSeconds(timeActionEvent);
         Event();
         _canEvent = true;
         yield return new WaitForSeconds(timeActionEvent);
+        _eventFailed = true;
         _eventIsReady = true;
         //_objectiveEvent = null;
         yield break;
@@ -152,12 +178,30 @@ public class DevilController : CharacterController
         {
             case 1:
                 Debug.Log("ok coffe");
+                _waitCoffe = true;
+                
                 //bulle affichant le coffe 
                 break;
             case 2:
                 Debug.Log("ok journal");
+                _waitJournal = true;
+
                 //bulle affichant le journal
                 break;
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (_waitCoffe && other.tag == "Coffe")
+        {
+            _coffeGood;
+        }
+        
+        if (_waitJournal && other.tag == "Journal")
+        {
+            _journalGood;
+        }
+    }
+    
 }
