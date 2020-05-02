@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : CharacterController
 {
@@ -44,6 +45,11 @@ public class PlayerController : CharacterController
         Interact();
         DisplaceVertical();
         MoveObjectPosition();
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("TristanScene");
+        }
     }
 
     private void Move()
