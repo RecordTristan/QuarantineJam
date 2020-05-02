@@ -30,10 +30,12 @@ public class GameController : MonoBehaviour
 
     public void CheckDefeat()
     {
-        if (player.GrabOjbect() && player.GetCurrentRoom() == devil.GetCurrentRoom())
+        if (player.GrabOjbect() && player.GetCurrentRoom() == devil.GetCurrentRoom() && !isEnd)
         {
             Debug.Log("Loose");
             player.Loose();
+            isEnd = true;
+            SoundController.instance.PlaySFX(gameOver);
         }
     }
 
