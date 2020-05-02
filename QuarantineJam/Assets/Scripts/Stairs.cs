@@ -9,15 +9,27 @@ public class Stairs : MonoBehaviour
     public Transform upStair;
     public Transform downStair;
 
-    void Awake()
+    void Start()
     {
         if (!upStair.gameObject.activeSelf)
         {
             upStair = null;
         }
+        else
+        {
+            upStair.position = new Vector3(upStair.position.x, 
+                LDController.instance.levelValue[level + 1], 
+                upStair.position.z);
+        }
         if (!downStair.gameObject.activeSelf)
         {
             downStair = null;
+        }
+        else
+        {
+            downStair.position = new Vector3(downStair.position.x,
+                LDController.instance.levelValue[level - 1],
+                downStair.position.z);
         }
     }
 
