@@ -205,7 +205,7 @@ public class PlayerController : CharacterController
         transform.position = Vector3.MoveTowards(
                 transform.position,
                 positionToGo,
-                speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
+                speedMove * Time.deltaTime * (0.5f));
 
         if (transform.position == positionToGo)
         {
@@ -247,7 +247,7 @@ public class PlayerController : CharacterController
         transform.position = Vector3.MoveTowards(
                 transform.position,
                 positionToGo,
-                speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
+                speedMove * Time.deltaTime * (0.5f));
         if (transform.position == positionToGo)
         {
             currentMovement--;
