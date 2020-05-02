@@ -12,9 +12,18 @@ public class DevilController : CharacterController
     [Header("Wait Time")]
     public float timeToUseStair;
     public float timeActionRoom;
+    public float timeActionEvent;
 
     private int _stairUse = 0;
 
+    private Event _objectiveEvent;
+    private bool _canEvent = false;
+    private bool _eventIsReady = true;
+    private bool _coffeGood = false;
+    private bool _journalGood = false;
+    private bool _waitCoffe = false;
+    private bool _waitJournal = false;
+    private bool _eventFailed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +92,27 @@ public class DevilController : CharacterController
             _targetPosition = Vector3.zero;
             _stairUse = 0;
         }
+
+
+        if (_eventIsReady)
+        {
+            StartCoroutine(MakeEvent()); 
+        }
+
+        if (_canEvent)
+        {
+            if (_coffeGood || _journalGood)
+            {
+                Debug.Log("Event Win");
+            }
+            else if(_eventFailed)
+            {
+                //defeat
+                Debug.Log("Event Defeat");
+            }
+
+        }
+        
     }
 
     private IEnumerator UseStair()
@@ -106,6 +136,7 @@ public class DevilController : CharacterController
         canMove = true;
         yield break;
     }
+
     private IEnumerator MakeAction()
     {
         canMove = false;
@@ -116,4 +147,59 @@ public class DevilController : CharacterController
         _objectiveRoom = null;
         yield break;
     }
+
+    private IEnumerator MakeEvent()
+    {
+        
+        _canEvent = false;
+        _eventIsReady = false;
+        _coffeGood = false;
+        _journalGood = false;
+        _waitCoffe = false;
+        _waitJournal = false;
+        _eventFailed = false;
+        //random temps event
+        yield return new WaitForSeconds(timeActionEvent);
+        Event();
+        _canEvent = true;
+        yield return new WaitForSeconds(timeActionEvent);
+        _eventFailed = true;
+        _eventIsReady = true;
+        //_objectiveEvent = null;
+        yield break;
+    }
+
+    public void Event()
+    {
+       
+        switch (Random.Range(1, 2))
+        {
+            case 1:
+                Debug.Log("ok coffe");
+                _waitCoffe = true;
+                
+                //bulle affichant le coffe 
+                break;
+            case 2:
+                Debug.Log("ok journal");
+                _waitJournal = true;
+
+                //bulle affichant le journal
+                break;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (_waitCoffe && other.tag == "Coffe")
+        {
+            _coffeGood = true;
+        }
+        
+        if (_waitJournal && other.tag == "Journal")
+        {
+            _journalGood = true;
+        }
+    }
+    
 }
