@@ -9,11 +9,19 @@ public class Stairs : MonoBehaviour
     public Transform upStair;
     public Transform downStair;
 
+    public SpriteRenderer display;
     private Material _mat;
 
     void Start()
     {
-        _mat = GetComponent<SpriteRenderer>().material;
+        if (display)
+        {
+            _mat = display.material;
+        }
+        else
+        {
+            _mat = GetComponent<SpriteRenderer>().material;
+        }
         if (!upStair.gameObject.activeSelf)
         {
             upStair = null;
