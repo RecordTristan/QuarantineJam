@@ -18,7 +18,7 @@ public class GrabObject : MonoBehaviour
         _anim = DOTween.Sequence();
     }
 
-    public virtual void UseObject(GameObject actionGameObject)
+    public virtual void UseObject(GrabObject actionGameObject)
     {
     }
 
@@ -27,6 +27,14 @@ public class GrabObject : MonoBehaviour
         if (other.tag == "Player")
         {
             GameController.instance.player.GiveObject(this);
+        }
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            GameController.instance.player.GiveObject(null);
         }
     }
 

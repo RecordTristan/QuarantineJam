@@ -3,6 +3,7 @@
 Shader "Custom/Silhouetted Bumped Diffuse" {
 		Properties{
 			_MainTex("Texture", 2D) = "white" {}
+			_Color("Main Color", Color) = (1,1,1,1)
 			_Outline("Outline", Float) = 0
 			_OutlineColor("Outline Color", Color) = (1,1,1,1)
 		}
@@ -38,12 +39,14 @@ Shader "Custom/Silhouetted Bumped Diffuse" {
 			float _Outline;
 			fixed4 _OutlineColor;
 			float4 _MainTex_TexelSize;
+			half4 _Color;
 
-			v2f vert(appdata_base IN)
+			v2f vert(appdata_full IN)
 			{
 				v2f OUT;
 				OUT.vertex = UnityObjectToClipPos(IN.vertex);
 				OUT.texcoord = IN.texcoord;
+				OUT.color = IN.color;
 				return OUT;
 			}
 
@@ -66,7 +69,7 @@ Shader "Custom/Silhouetted Bumped Diffuse" {
 
 				c.rgb *= c.a;
 
-				return c;
+				return c * _Color;
 			}
 
 			ENDCG

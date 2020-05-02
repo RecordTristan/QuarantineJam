@@ -1,39 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
-    public int nbrObjectsToRecup;
 
-    private Dictionary<string, GameObject> _objectList = new Dictionary<string, GameObject>();
+    private Dictionary<string, GrabObject> _objectList = new Dictionary<string, GrabObject>();
 
     void Awake()
     {
         if (instance) Destroy(gameObject);
         else instance = this;
+
+        GrabObject[] objectsIG = FindObjectsOfType<GrabObject>();
+        for (int i = objectsIG.Length; i-- > 0;)
+        {
+            if (!(objectsIG[i] as Suitcase))
+            {
+                AddObject(objectsIG[i]);
+            }
+        }
     }
 
     #region ObjectTaker
-    [System.Obsolete("Replace to grab object")]
-    public void AddObject(GameObject objectGrab)
+    public void AddObject(GrabObject objectGrab)
     {
-        _objectList.Add("", objectGrab);
+        _objectList.Add(objectGrab.nameGrabObject, objectGrab);
     }
-    [System.Obsolete("Replace to grab object")]
-    public void RemoveObject(GameObject removeObjectGrab)
+    public void RemoveObject(GrabObject removeObjectGrab)
     {
-        _objectList.Remove("");
+        _objectList.Remove(removeObjectGrab.nameGrabObject);
     }
-    public GameObject GetInteractObject(string nameObject)
+    public GrabObject GetInteractObject(string nameObject)
     {
         return _objectList[nameObject];
     }
-    #endregion
-
-    public void GetObjects()
+    public GrabObject GetInteractObject(int indexOfObject)
     {
-
+        return _objectList.Values.ToList()[indexOfObject];
     }
+    public int GetNumberOfObject()
+    {
+        return _objectList.Count;
+    }
+    #endregion
+    
 }

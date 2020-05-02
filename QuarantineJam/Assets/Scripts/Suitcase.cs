@@ -8,32 +8,25 @@ public class Suitcase : GrabObject
 {
     private bool chekWin = false;
     private GrabObject _grabObject;
-    public List<GameObject> objets = new List<GameObject>();
+    public List<GrabObject> objets = new List<GrabObject>();
 
 
-    public override void UseObject(GameObject actionGameObject)
+    public override void UseObject(GrabObject actionGameObject)
     {
         actionGameObject.transform.SetParent(transform);
 
         actionGameObject.transform.position = transform.position;
+        
 
-        actionGameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-        if (!objets.Contains(actionGameObject))
+        if (!objets.Contains(actionGameObject) && actionGameObject != this)
         {
+            actionGameObject.GetComponent<BoxCollider2D>().enabled = false;
             objets.Add(actionGameObject);
-            objets.Remove(this.gameObject);
-
-
+            objets.Remove(this);
         }
 
-        List<GameObject> compareToListFinish = objets.Where(i => GameController.instance.winItems.Contains(i)).ToList();
-
-        if (compareToListFinish.Count == GameController.instance.winItems.Count)
-        {
-            Debug.Log("Win");
-            //chekWin;
-        }
+        GameController.instance.CheckWin(objets);
+        
     }
     
 }

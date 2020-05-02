@@ -84,7 +84,7 @@ public class PlayerController : CharacterController
 
         if (_currentGrab)
         {
-            _grabObjectDetection?.UseObject(_currentGrab.gameObject);
+            _grabObjectDetection?.UseObject(_currentGrab);
             _currentGrab.Put(currentLevel);
             _currentGrab = null;
         }
