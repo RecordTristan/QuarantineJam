@@ -10,7 +10,11 @@ public class PlayerController : CharacterController
     private bool _usedStair = false;
 
     //Grab
+    [Header("Levitation")]
+    public float limitLevitation = 2;
+    public float speedLevitation = 2;
     public Transform objectGrabPos;
+    private Vector3 _basePoseGrab;
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
 
@@ -19,6 +23,7 @@ public class PlayerController : CharacterController
     {
         base.Awake();
         _baseSpeedMove = speedMove;
+        _basePoseGrab = objectGrabPos.localPosition;
         canMove = true;
     }
 
@@ -32,6 +37,7 @@ public class PlayerController : CharacterController
         Move();
         Interact();
         DisplaceVertical();
+        MoveObjectPosition();
     }
 
     private void Move()
@@ -96,6 +102,10 @@ public class PlayerController : CharacterController
     public bool GrabOjbect()
     {
         return _currentGrab ? true : false;
+    }
+    public void MoveObjectPosition()
+    {
+        objectGrabPos.transform.localPosition = new Vector3(objectGrabPos.transform.localPosition.x, _basePoseGrab.y + Mathf.Sin(Time.time * speedLevitation)* limitLevitation, _basePoseGrab.z);
     }
     #endregion
 
