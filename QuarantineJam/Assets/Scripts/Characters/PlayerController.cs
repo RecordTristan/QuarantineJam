@@ -131,6 +131,8 @@ public class PlayerController : CharacterController
         if (_usedStair)
             return;
 
+        anim.SetBool("Walk", true);
+
         //ToDo displace on stairs
         if (Vertical > 0)
         {
@@ -158,6 +160,17 @@ public class PlayerController : CharacterController
                 else
                 {
                     positionToGo = _startVertical.displacementPosition[currentMovement].transform.position;
+                }
+
+                if (display.transform.position.x < positionToGo.x)
+                {
+                    float scale = Mathf.Abs(display.transform.localScale.x);
+                    display.transform.localScale = new Vector3(scale, scale, scale);
+                }
+                else
+                {
+                    float scale = Mathf.Abs(display.transform.localScale.x);
+                    display.transform.localScale = new Vector3(-scale, scale, scale);
                 }
 
                 display.transform.position = Vector3.MoveTowards(
@@ -198,6 +211,17 @@ public class PlayerController : CharacterController
                 else
                 {
                     positionToGo = _startVertical.displacementPosition[currentMovement-1].transform.position;
+                }
+
+                if (display.transform.position.x < positionToGo.x)
+                {
+                    float scale = Mathf.Abs(display.transform.localScale.x);
+                    display.transform.localScale = new Vector3(scale, scale, scale);
+                }
+                else
+                {
+                    float scale = Mathf.Abs(display.transform.localScale.x);
+                    display.transform.localScale = new Vector3(-scale, scale, scale);
                 }
 
                 display.transform.position = Vector3.MoveTowards(
