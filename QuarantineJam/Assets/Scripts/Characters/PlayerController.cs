@@ -19,6 +19,7 @@ public class PlayerController : CharacterController
     {
         base.Awake();
         _baseSpeedMove = speedMove;
+        canMove = true;
     }
 
     void Start()
@@ -84,7 +85,7 @@ public class PlayerController : CharacterController
     public void Loose()
     {
         anim.SetTrigger("Loose");
-        canMove = true;
+        canMove = false;
     }
 
     #region Object
