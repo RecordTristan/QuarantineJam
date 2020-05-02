@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using DG.Tweening;
 
 public class DevilController : CharacterController
 {
@@ -87,6 +89,7 @@ public class DevilController : CharacterController
         }
         else
         {
+            //Choose A random room
             _objectiveRoom = HomeController.instance.GetRandomRoom(this);
             canMove = true;
             _targetPosition = Vector3.zero;
@@ -120,20 +123,26 @@ public class DevilController : CharacterController
         canMove = false;
         Stairs stairs = GetStairs();
 
+        List<Vector3> positionTrans = new List<Vector3>();
         if (_stairUse > 0)
         {
-            transform.position = stairs.upStair.transform.position;
+            positionTrans.Add(stairs.currentPlacement.position);
+            positionTrans.AddRange(stairs.displacementPosition.Select(s => s.position).ToArray());
+            positionTrans.Add(stairs.upStair.currentPlacement.position);
         }
         else
         {
-            transform.position = stairs.downStair.transform.position;
+            positionTrans.Add(stairs.downStair.currentPlacement.position);
+            positionTrans.AddRange(stairs.downStair.displacementPosition.Select(s => s.position).ToArray());
+            positionTrans.Add(stairs.currentPlacement.position);
+            positionTrans.Reverse();
         }
         currentLevel += _stairUse;
-
-        yield return new WaitForSeconds(timeToUseStair);
-        _stairUse = 0;
-        _targetPosition = Vector3.zero;
-        canMove = true;
+        transform.DOPath(positionTrans.ToArray(), speedMove).SetSpeedBased(true).OnComplete(()=> {
+            _stairUse = 0;
+            _targetPosition = Vector3.zero;
+            canMove = true;
+        });
         yield break;
     }
 
@@ -175,13 +184,11 @@ public class DevilController : CharacterController
         switch (Random.Range(1, 2))
         {
             case 1:
-                Debug.Log("ok coffe");
                 _waitCoffe = true;
                 
                 //bulle affichant le coffe 
                 break;
             case 2:
-                Debug.Log("ok journal");
                 _waitJournal = true;
 
                 //bulle affichant le journal
