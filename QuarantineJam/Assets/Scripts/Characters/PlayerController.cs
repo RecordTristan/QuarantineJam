@@ -18,8 +18,9 @@ public class PlayerController : CharacterController
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _baseSpeedMove = speedMove;
     }
 
@@ -40,7 +41,21 @@ public class PlayerController : CharacterController
         float Horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * speedMove;
 
         if (Horizontal == 0)
+        {
+            anim.SetBool("Walk", false);
             return;
+        }
+        anim.SetBool("Walk", true);
+        if (Horizontal > 0)
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(-scale, scale, scale);
+        }
 
         transform.Translate(Horizontal, 0, 0);
     }
@@ -51,6 +66,8 @@ public class PlayerController : CharacterController
 
         if (!Input.GetButtonDown("Interact"))
             return;
+
+        anim.SetTrigger("TakeObject");
 
         if (_currentGrab)
         {

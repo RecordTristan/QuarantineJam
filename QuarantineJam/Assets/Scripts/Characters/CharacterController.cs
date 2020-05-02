@@ -11,6 +11,15 @@ public class CharacterController : MonoBehaviour
 
     protected int currentLevel = 0;
 
+    protected SpriteRenderer display;
+    protected Animator anim;
+
+    protected virtual void Awake()
+    {
+        display = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+    }
+
     #region Room
     public Room GetCurrentRoom()
     {
