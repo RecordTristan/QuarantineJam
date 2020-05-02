@@ -11,6 +11,8 @@ public class CharacterController : MonoBehaviour
 
     protected int currentLevel = 0;
 
+    protected bool canMove = false;
+
     protected SpriteRenderer display;
     protected Animator anim;
 

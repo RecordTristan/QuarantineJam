@@ -14,6 +14,7 @@ public class PlayerController : CharacterController
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -41,6 +42,9 @@ public class PlayerController : CharacterController
             anim.SetBool("Walk", false);
             return;
         }
+        if (!canMove)
+            return;
+
         anim.SetBool("Walk", true);
         if (Horizontal > 0)
         {
@@ -80,6 +84,7 @@ public class PlayerController : CharacterController
     public void Loose()
     {
         anim.SetTrigger("Loose");
+        canMove = true;
     }
 
     #region Object

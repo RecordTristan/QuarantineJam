@@ -13,7 +13,6 @@ public class DevilController : CharacterController
     public float timeToUseStair;
     public float timeActionRoom;
 
-    private bool _canMove = false;
     private int _stairUse = 0;
 
     // Start is called before the first frame update
@@ -26,7 +25,7 @@ public class DevilController : CharacterController
     {
         if (_objectiveRoom)
         {
-            if (!_canMove)
+            if (!canMove)
                 return;
 
             if (_targetPosition == Vector3.zero)
@@ -80,7 +79,7 @@ public class DevilController : CharacterController
         else
         {
             _objectiveRoom = HomeController.instance.GetRandomRoom(this);
-            _canMove = true;
+            canMove = true;
             _targetPosition = Vector3.zero;
             _stairUse = 0;
         }
@@ -88,7 +87,7 @@ public class DevilController : CharacterController
 
     private IEnumerator UseStair()
     {
-        _canMove = false;
+        canMove = false;
         Stairs stairs = GetStairs();
 
         if (_stairUse > 0)
@@ -104,15 +103,15 @@ public class DevilController : CharacterController
         yield return new WaitForSeconds(timeToUseStair);
         _stairUse = 0;
         _targetPosition = Vector3.zero;
-        _canMove = true;
+        canMove = true;
         yield break;
     }
     private IEnumerator MakeAction()
     {
-        _canMove = false;
+        canMove = false;
 
         yield return new WaitForSeconds(timeActionRoom);
-        _canMove = true;
+        canMove = true;
 
         _objectiveRoom = null;
         yield break;
