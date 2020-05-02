@@ -8,6 +8,7 @@ public class PlayerController : CharacterController
     public float deadZoneVertical = 0.5f;
 
     private bool _usedStair = false;
+    private BoxCollider2D _collider;
 
     //Grab
     [Header("Levitation")]
@@ -29,6 +30,7 @@ public class PlayerController : CharacterController
         _baseSpeedMove = speedMove;
         _basePoseGrab = objectGrabPos.localPosition;
         canMove = true;
+        _collider = GetComponent<BoxCollider2D>();
     }
 
     void Start()
@@ -126,10 +128,11 @@ public class PlayerController : CharacterController
             _usedStair = false;
             return;
         }
-        if (!stairs)
+        if (!stairs && !_startVertical)
             return;
         if (_usedStair)
             return;
+
 
         anim.SetBool("Walk", true);
 
@@ -139,48 +142,16 @@ public class PlayerController : CharacterController
             if (currentDeplacement >= 1)
             {
                 currentLevel++;
-                display.transform.localPosition = Vector3.zero;
-                transform.position = stairs.upStair.currentPlacement.transform.position;
+                currentMovement = 0;
+                transform.position = _startVertical.upStair.currentPlacement.transform.position;
                 _usedStair = true;
                 _startVertical = null;
-                currentMovement = 0;
+                currentDeplacement = 0.5f;
+                _collider.enabled = true;
             }
             else
             {
-                if (!_startVertical)
-                {
-                    _startVertical = stairs;
-                }
-                currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length+1);
-                Vector3 positionToGo;
-                if (currentMovement >= _startVertical.displacementPosition.Length)
-                {
-                    positionToGo = _startVertical.upStair.currentPlacement.transform.position;
-                }
-                else
-                {
-                    positionToGo = _startVertical.displacementPosition[currentMovement].transform.position;
-                }
-
-                if (display.transform.position.x < positionToGo.x)
-                {
-                    float scale = Mathf.Abs(display.transform.localScale.x);
-                    display.transform.localScale = new Vector3(scale, scale, scale);
-                }
-                else
-                {
-                    float scale = Mathf.Abs(display.transform.localScale.x);
-                    display.transform.localScale = new Vector3(-scale, scale, scale);
-                }
-
-                display.transform.position = Vector3.MoveTowards(
-                        display.transform.position,
-                        positionToGo,
-                        speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
-                if (display.transform.position == positionToGo)
-                {
-                    currentMovement++;
-                }
+                MoveUpStair(stairs);
             }
         }
         else
@@ -189,53 +160,102 @@ public class PlayerController : CharacterController
             if (currentDeplacement <= 0)
             {
                 currentLevel--;
-                display.transform.localPosition = Vector3.zero;
-                transform.position = _startVertical.currentPlacement.transform.position;
-                _usedStair = true;
                 currentMovement = 0;
+                transform.position = _startVertical.currentPlacement.transform.position;
                 _startVertical = null;
+                _usedStair = true;
+                currentDeplacement = 0.5f;
+                _collider.enabled = true;
             }
             else
             {
-                if (!_startVertical)
-                {
-                    _startVertical = stairs.downStair;
-                    currentMovement = _startVertical.displacementPosition.Length;
-                }
-                currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length + 1);
-                Vector3 positionToGo;
-                if (currentMovement <= 0)
-                {
-                    positionToGo = _startVertical.currentPlacement.transform.position;
-                }
-                else
-                {
-                    positionToGo = _startVertical.displacementPosition[currentMovement-1].transform.position;
-                }
-
-                if (display.transform.position.x < positionToGo.x)
-                {
-                    float scale = Mathf.Abs(display.transform.localScale.x);
-                    display.transform.localScale = new Vector3(scale, scale, scale);
-                }
-                else
-                {
-                    float scale = Mathf.Abs(display.transform.localScale.x);
-                    display.transform.localScale = new Vector3(-scale, scale, scale);
-                }
-
-                display.transform.position = Vector3.MoveTowards(
-                        display.transform.position,
-                        positionToGo,
-                        speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
-                if (display.transform.position == positionToGo)
-                {
-                    currentMovement--;
-                }
+                MoveDownStair(stairs);
             }
         }
     }
+    private void MoveUpStair(Stairs stairs)
+    {
+        if (!_startVertical)
+        {
+            _startVertical = stairs;
+            _collider.enabled = !_startVertical.needToGhost;
+            CameraManager2D.instance.StairMovement(currentLevel+1);
+        }
+        currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length + 1);
+        Vector3 positionToGo;
+        if (currentMovement >= _startVertical.displacementPosition.Length)
+        {
+            positionToGo = _startVertical.upStair.currentPlacement.transform.position;
+        }
+        else
+        {
+            positionToGo = _startVertical.displacementPosition[currentMovement].transform.position;
+        }
 
-    
+        if (transform.position.x < positionToGo.x)
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(-scale, scale, scale);
+        }
+        transform.position = Vector3.MoveTowards(
+                transform.position,
+                positionToGo,
+                speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
+
+        if (transform.position == positionToGo)
+        {
+            currentMovement++;
+        }
+    }
+    private void MoveDownStair(Stairs stairs)
+    {
+        if (!_startVertical)
+        {
+            _startVertical = stairs.downStair;
+            currentMovement = _startVertical.displacementPosition.Length;
+            _collider.enabled = !_startVertical.needToGhost;
+
+            CameraManager2D.instance.StairMovement(currentLevel - 1);
+        }
+        currentDeplacement = (float)currentMovement / (_startVertical.displacementPosition.Length + 1);
+        Vector3 positionToGo;
+        if (currentMovement <= 0)
+        {
+            positionToGo = _startVertical.currentPlacement.transform.position;
+        }
+        else
+        {
+            positionToGo = _startVertical.displacementPosition[currentMovement - 1].transform.position;
+        }
+
+        if (display.transform.position.x < positionToGo.x)
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            float scale = Mathf.Abs(display.transform.localScale.x);
+            display.transform.localScale = new Vector3(-scale, scale, scale);
+        }
+
+        transform.position = Vector3.MoveTowards(
+                transform.position,
+                positionToGo,
+                speedMove * Time.deltaTime * (currentMovement == 0 ? 10f : 0.5f));
+        if (transform.position == positionToGo)
+        {
+            currentMovement--;
+        }
+    }
+    public float GetCurrentPercentStair()
+    {
+        return currentDeplacement;
+    }
     #endregion
 }

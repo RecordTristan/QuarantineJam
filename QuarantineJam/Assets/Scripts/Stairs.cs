@@ -8,6 +8,8 @@ public class Stairs : Room
     public Transform currentPlacement;
     public Stairs downStair;
     public Transform[] displacementPosition;
+    public ChangeAreaFocusCam areaFocus;
+    public bool needToGhost;
 
     public SpriteRenderer display;
     private Material _mat;
@@ -30,7 +32,7 @@ public class Stairs : Room
 
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerStay2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
         if (other.tag == "Player")

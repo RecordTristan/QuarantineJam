@@ -5,6 +5,15 @@ using UnityEngine;
 public class ChangeAreaFocusCam : MonoBehaviour
 {
     public GameObject camToFocus;
+    public int level;
+
+    void Start()
+    {
+        camToFocus.transform.position = new Vector3(
+            camToFocus.transform.position.x,
+            LDController.instance.levelCamValue[level],
+            -10);
+    }
 
     public void OnTriggerEnter2D(Collider2D collider2D)
     {

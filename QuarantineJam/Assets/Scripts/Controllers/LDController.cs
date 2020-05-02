@@ -7,6 +7,7 @@ public class LDController : MonoBehaviour
     public static LDController instance;
 
     public float[] levelValue;
+    public float[] levelCamValue;
 
     void Awake()
     {
