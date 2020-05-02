@@ -15,16 +15,5 @@ public class Suitcase : GrabObject
         actionGameObject.transform.SetParent(transform);
         objets.Add(actionGameObject);
     }
-
-    //protected override void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    base.OnTriggerEnter2D(other);
-
-    //    if (other.tag == "Item")
-    //    {
-           
-    //    }
-    //}
-
     
 }
