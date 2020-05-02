@@ -13,14 +13,12 @@ public class PlayerController : MonoBehaviour
     private Stairs _stairs;
     private bool _usedStair = false;
 
-    private bool _isOk = false;
-    private bool Grab = true;
-    public GameObject Object;
-
     //Grab
     public Transform objectGrabPos;
     private GrabObject _grabObjectDetection;
     private GrabObject _currentGrab;
+
+  
 
     void Awake()
     {
@@ -58,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
         if (_currentGrab)
         {
+            _grabObjectDetection?.UseObject(_currentGrab.gameObject);
             _currentGrab.Put();
             _currentGrab = null;
         }
@@ -66,6 +65,7 @@ public class PlayerController : MonoBehaviour
             _currentGrab = _grabObjectDetection;
         }
 
+     
     }
 
     public void GiveObject(GrabObject grabObject)
@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
         _grabObjectDetection = grabObject;
     }
 
+
+    
     #region Stair
     private void DisplaceVertical()
     {

@@ -6,8 +6,13 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour 
 {
     public string nameGrabObject;
+
+    public virtual void UseObject(GameObject actionGameObject)
+    {
+
+    }
     
-    void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
