@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public PlayerController player;
     public DevilController devil;
 
+    public List<GameObject> winItems = new List<GameObject>();
+
     void Awake()
     {
         if (instance) Destroy(gameObject);
@@ -22,4 +24,5 @@ public class GameController : MonoBehaviour
             Debug.Log("Loose");
         }
     }
+
 }
