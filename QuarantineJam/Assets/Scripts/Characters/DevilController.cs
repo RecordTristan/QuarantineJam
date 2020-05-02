@@ -12,10 +12,14 @@ public class DevilController : CharacterController
     [Header("Wait Time")]
     public float timeToUseStair;
     public float timeActionRoom;
+    public float timeActionEvent;
 
     private bool _canMove = false;
     private int _stairUse = 0;
 
+    private Event _objectiveEvent;
+    private bool _canEvent = false;
+    private bool _eventIsReady = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +88,13 @@ public class DevilController : CharacterController
             _targetPosition = Vector3.zero;
             _stairUse = 0;
         }
+
+
+        if (_eventIsReady)
+        {
+            StartCoroutine(MakeEvent()); 
+        }
+        
     }
 
     private IEnumerator UseStair()
@@ -107,6 +118,7 @@ public class DevilController : CharacterController
         _canMove = true;
         yield break;
     }
+
     private IEnumerator MakeAction()
     {
         _canMove = false;
@@ -116,5 +128,36 @@ public class DevilController : CharacterController
 
         _objectiveRoom = null;
         yield break;
+    }
+
+    private IEnumerator MakeEvent()
+    {
+        
+        _canEvent = false;
+        _eventIsReady = false;
+        //random temps event
+        yield return new WaitForSeconds(timeActionEvent);
+        Event();
+        _canEvent = true;
+        yield return new WaitForSeconds(timeActionEvent);
+        _eventIsReady = true;
+        //_objectiveEvent = null;
+        yield break;
+    }
+
+    public void Event()
+    {
+       
+        switch (Random.Range(1, 2))
+        {
+            case 1:
+                Debug.Log("ok coffe");
+                //bulle affichant le coffe 
+                break;
+            case 2:
+                Debug.Log("ok journal");
+                //bulle affichant le journal
+                break;
+        }
     }
 }
