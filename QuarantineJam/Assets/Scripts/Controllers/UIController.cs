@@ -25,14 +25,23 @@ public class UIController : MonoBehaviour
     public GameObject lPanel;
 
     public Image[] panelImage;
+
+    [Header("Score")]
+    public GameObject endPanel;
+    public GameObject winscore;
+    public GameObject looseScore;
+    public TextMeshProUGUI textScore;
+
     private bool _eventActive;
 
     private bool _activeList = false;
-
+    int _value;
     void Awake()
     {
         if (instance) Destroy(gameObject);
         else instance = this;
+
+        endPanel.SetActive(false);
     }
 
     void Update()
@@ -96,6 +105,30 @@ public class UIController : MonoBehaviour
     public void EndEvent()
     {
         _eventActive = false;
+    }
+    #endregion
+
+    #region EndPanel
+    public void Win()
+    {
+        endPanel.SetActive(true);
+        winscore.SetActive(true);
+        looseScore.SetActive(false);
+        DisplayScore();
+    }
+    public void Loose()
+    {
+        endPanel.SetActive(true);
+        winscore.SetActive(false);
+        looseScore.SetActive(true);
+        DisplayScore();
+    }
+    public void DisplayScore()
+    {
+        DOTween.To(()=> _value, (x)=> {
+            _value = x;
+            textScore.text = _value.ToString();
+        }, GameController.instance.score, 2 );
     }
     #endregion
 }

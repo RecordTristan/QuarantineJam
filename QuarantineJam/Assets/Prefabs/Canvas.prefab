@@ -1462,6 +1462,10 @@ MonoBehaviour:
   - {fileID: 5092544070634196393}
   - {fileID: 5737389135172394574}
   - {fileID: 3441512172587106334}
+  endPanel: {fileID: 7794632150381974479}
+  winscore: {fileID: 6806060399652365389}
+  looseScore: {fileID: 3832005355287993360}
+  textScore: {fileID: 7766904784011494075}
 --- !u!1 &260767146183035922
 GameObject:
   m_ObjectHideFlags: 0
