@@ -10,6 +10,7 @@ public class PlayerController : CharacterController
     private float _baseSpeedMove;
     public float deadZoneVertical = 0.5f;
     public ParticleSystem effectDead;
+    public GameObject UIPause;
 
     private bool _usedStair = false;
     private BoxCollider2D _collider;
@@ -58,6 +59,10 @@ public class PlayerController : CharacterController
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("TristanScene");
+        }
+        if (Input.GetButtonDown("Cancel"))
+        {
+            UIPause.SetActive(true);
         }
     }
 
