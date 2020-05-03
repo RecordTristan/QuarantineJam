@@ -72,7 +72,6 @@ public class SoundController : MonoBehaviour
     }
     public void PlaySFX(AudioClip[] sfx)
     {
-        Debug.Log("OK");
         int rand = UnityEngine.Random.Range(0, sfx.Length);
         sfxSource.PlayOneShot(sfx[rand]);
     }

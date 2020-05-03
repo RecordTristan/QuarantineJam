@@ -6,6 +6,9 @@ using DG.Tweening;
 
 public class DevilController : CharacterController
 {
+    public AudioClip callDevil;
+
+    [Header("Settings")]
     public float distanceTarget = 0.2f;
 
     private Room _objectiveRoom;
@@ -126,21 +129,6 @@ public class DevilController : CharacterController
             StartCoroutine(MakeEvent()); 
         }
 
-        if (_canEvent)
-        {
-
-            if (_coffeGood || _journalGood)
-            {
-                Debug.Log("Event Win");
-            }
-            else if(_eventFailed)
-            {
-                //defeat
-                Debug.Log("Event Defeat");
-            }
-
-        }
-        
     }
 
     private IEnumerator UseStair()
@@ -184,8 +172,6 @@ public class DevilController : CharacterController
 
     private IEnumerator MakeEvent()
     {
-        
-        _canEvent = false;
         _eventIsReady = false;
         _coffeGood = false;
         _journalGood = false;
@@ -195,9 +181,16 @@ public class DevilController : CharacterController
         //random temps event
         yield return new WaitForSeconds(timeActionEvent);
         Event();
-        _canEvent = true;
         yield return new WaitForSeconds(timeActionEvent);
-        _eventFailed = true;
+        if (_coffeGood || _journalGood)
+        {
+            Debug.Log("Event Win");
+        }
+        else
+        {
+            //defeat
+            Debug.Log("Event Defeat");
+        }
         yield return new WaitForSeconds(timeActionEvent);
 
         _eventIsReady = true;
@@ -217,6 +210,7 @@ public class DevilController : CharacterController
     {
         if (_waitCoffe || _waitJournal)
             return;
+        SoundController.instance.PlaySFX(callDevil);
 
         switch (Random.Range(1, 2))
         {
@@ -227,8 +221,7 @@ public class DevilController : CharacterController
                 break;
             case 2:
                 _waitJournal = true;
-                Debug.Log("Go Coffee");
-
+                Debug.Log("Go Journal");
                 //bulle affichant le journal
                 break;
         }

@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 3160764951387236767}
   - component: {fileID: 3160764951387236765}
   - component: {fileID: 6962710740653276311}
+  - component: {fileID: 5010752651793711823}
   m_Layer: 8
   m_Name: Devil
   m_TagString: Devil
@@ -202,9 +203,26 @@ MonoBehaviour:
   walkOutHouse:
   - {fileID: 8300000, guid: 8ea11fe2fed8384499db947d8b8b26dc, type: 3}
   - {fileID: 8300000, guid: d2e6fa8dbe648bb479befd9d7d79775c, type: 3}
+  callDevil: {fileID: 8300000, guid: 69e5b4a015928da4b88c9e8947aef7b2, type: 3}
   distanceTarget: 0.2
   timeToUseStair: 0
   timeActionRoom: 0
   timeActionEvent: 0
   timeToHappenDevil: 0
   animHappenDevil: {fileID: 0}
+--- !u!58 &5010752651793711823
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160764951387236764}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.47}
+  serializedVersion: 2
+  m_Radius: 0.7
