@@ -314,7 +314,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: -651}
-  m_SizeDelta: {x: 1000, y: 999}
+  m_SizeDelta: {x: 704.3, y: 999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &240173096
 MonoBehaviour:
@@ -370,10 +370,10 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25
+  m_fontSize: 22
   m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 471
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
     spaceCount: 111
     wordCount: 87
     linkCount: 0
-    lineCount: 37
+    lineCount: 38
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -601,7 +601,7 @@ Transform:
   m_GameObject: {fileID: 724874155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 836, z: -4779}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 35, y: 35, z: 35}
   m_Children: []
   m_Father: {fileID: 240173095}
   m_RootOrder: 0
@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 1182667218}
   - component: {fileID: 1182667217}
   - component: {fileID: 1182667219}
+  - component: {fileID: 1182667220}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -751,6 +752,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1182667220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182667215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa18462cc13c9dc439f4b61b86d036c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1624071169
 GameObject:
   m_ObjectHideFlags: 0

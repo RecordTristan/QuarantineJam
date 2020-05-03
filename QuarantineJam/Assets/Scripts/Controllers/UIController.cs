@@ -14,6 +14,11 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI[] listObject;
     public Image[] trailListObject;
 
+    [Header("Pause")]
+    public GameObject UIPause;
+    public GameObject buttonPause;
+
+    [Header("List")]
     public RectTransform listPanel;
     public GameObject topListPanel;
     public GameObject botListPanel;
@@ -25,7 +30,6 @@ public class UIController : MonoBehaviour
     public GameObject brPanel;
     public GameObject blPanel;
     public GameObject lPanel;
-    public GameObject UIPause;
 
     public Image[] panelImage;
 
@@ -58,10 +62,7 @@ public class UIController : MonoBehaviour
     }
 
     #region ListObject
-    public void ActivePause()
-    {
-        UIPause.SetActive(true);
-    }
+    
     public void ActiveList()
     {
         if (_activeList)
@@ -143,6 +144,11 @@ public class UIController : MonoBehaviour
     }
     #endregion
     #region MenuControl
+    public void ActivePause()
+    {
+        UIPause.SetActive(true);
+        StartCoroutine(FocusEventSystem(buttonPause));
+    }
     public void LoadScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene);

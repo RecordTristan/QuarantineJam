@@ -1448,6 +1448,8 @@ MonoBehaviour:
   - {fileID: 6008987626323253722}
   - {fileID: 4473217649148038292}
   - {fileID: 1902379458185485707}
+  UIPause: {fileID: 219815914442371149}
+  buttonPause: {fileID: 0}
   listPanel: {fileID: 219815913049637421}
   topListPanel: {fileID: 3279122391471474054}
   botListPanel: {fileID: 7245474551595356371}
@@ -1457,7 +1459,6 @@ MonoBehaviour:
   brPanel: {fileID: 4277904456822603756}
   blPanel: {fileID: 219815914675038185}
   lPanel: {fileID: 4614651503741310099}
-  UIPause: {fileID: 0}
   panelImage:
   - {fileID: 2823699116269672305}
   - {fileID: 7688356552693948292}
@@ -1470,7 +1471,7 @@ MonoBehaviour:
   winscore: {fileID: 6806060399652365389}
   looseScore: {fileID: 3832005355287993360}
   textScore: {fileID: 7766904784011494075}
-  vibration: {fileID: 0}
+  vibration: {fileID: 2394609799440659678}
 --- !u!1 &260767146183035922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,7 +2733,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MenuStart
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5455502725588319472
@@ -3535,7 +3536,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &9060574993719899677
