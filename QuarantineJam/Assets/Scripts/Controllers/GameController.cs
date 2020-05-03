@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
             player.Loose();
             isEnd = true;
             SoundController.instance.PlaySFX(gameOver);
+            SoundController.instance.PlayTypeMusic(TypeMusic.End);
             UIController.instance.Loose();
         }
     }
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour
             isEnd = true;
             player.Win();
             UIController.instance.Win();
+            SoundController.instance.PlayTypeMusic(TypeMusic.End);
             Debug.Log("Win");
             //chekWin;
         }
