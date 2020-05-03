@@ -9,6 +9,7 @@ public class PlayerController : CharacterController
     [Header("Settings")]
     private float _baseSpeedMove;
     public float deadZoneVertical = 0.5f;
+    public ParticleSystem effectDead;
 
     private bool _usedStair = false;
     private BoxCollider2D _collider;
@@ -109,6 +110,22 @@ public class PlayerController : CharacterController
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Devil")
+        {
+            effectDead.Play();
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Devil")
+        {
+            effectDead.Stop();
+        }
+    }
+
+    #region End
     public void Loose()
     {
         if (GameController.instance.isEnd)
@@ -122,6 +139,7 @@ public class PlayerController : CharacterController
         winAnim.Play();
         canMove = false;
     }
+    #endregion
 
     #region Object
     public void GiveObject(GrabObject grabObject)
