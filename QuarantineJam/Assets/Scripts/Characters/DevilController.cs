@@ -203,6 +203,7 @@ public class DevilController : CharacterController
         yield return new WaitForSeconds(timeActionEvent);
         UIController.instance.EndEvent();
         buble.SetActive(false);
+        CameraManager2D.instance.OutScreen();
         if (_coffeGood || _journalGood)
         {
             Debug.Log("Event Win");
