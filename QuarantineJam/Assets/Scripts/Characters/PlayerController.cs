@@ -309,7 +309,7 @@ public class PlayerController : CharacterController
         {
             if (currentDeplacement >= 1)
             {
-                currentLevel++;
+                currentLevel = GetCurrentRoom().level;
                 currentMovement = 0;
                 transform.position = _startVertical.upStair.currentPlacement.transform.position;
                 _usedStair = true;
@@ -332,7 +332,7 @@ public class PlayerController : CharacterController
             
             if (currentDeplacement <= 0)
             {
-                currentLevel--;
+                currentLevel = GetCurrentRoom().level;
                 currentMovement = 0;
                 transform.position = _startVertical.currentPlacement.transform.position;
                 _startVertical = null;
