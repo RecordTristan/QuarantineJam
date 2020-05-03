@@ -74,4 +74,84 @@ public class CameraManager2D : MonoBehaviour
         this.amplify = amplify;
         timeShake = time;
     }
+
+    public void ClampPositionToScreenPanel()
+    {
+        Vector3 bottomLeft = _cam.ScreenToWorldPoint(Vector3.zero);
+        Vector3 topRight = _cam.ScreenToWorldPoint(new Vector3(_cam.pixelWidth, _cam.pixelHeight, 0));
+
+        //Calculate screen size
+        Vector2 screenSize = new Vector2(topRight.x - bottomLeft.x, topRight.y - bottomLeft.y);
+        Vector2 halfScreenSize = screenSize / 2;
+
+        Transform devilTrans = GameController.instance.devil.transform;
+        bool inX = false;
+        bool inY = false;
+        bool left = false;
+        int level;
+        if (devilTrans.position.x > bottomLeft.x && devilTrans.position.x < topRight.x)
+        {
+            inX = true;
+        }
+        if (devilTrans.position.y > bottomLeft.y && devilTrans.position.y < topRight.y)
+        {
+            inY = true;
+        }
+        if(inX && inY)
+        {
+            OutScreen();
+            return;
+        }
+        if (devilTrans.position.x < 0)
+        {
+            left = true;
+        }
+        OutScreen();
+
+        int levelDevil = GameController.instance.devil.GetCurrentRoom().level;
+        int levelPlayer = GameController.instance.player.GetCurrentRoom().level;
+        if ( levelDevil < levelPlayer)
+        {
+            if (left)
+            {
+                UIController.instance.blPanel.SetActive(true);
+            }
+            else
+            {
+                UIController.instance.brPanel.SetActive(true);
+            }
+        }
+        else if (levelPlayer == levelDevil)
+        {
+            if (left)
+            {
+                UIController.instance.lPanel.SetActive(true);
+            }
+            else
+            {
+                UIController.instance.rPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            if (left)
+            {
+                UIController.instance.tlPanel.SetActive(true);
+            }
+            else
+            {
+                UIController.instance.trPanel.SetActive(true);
+            }
+        }
+    }
+    public void OutScreen()
+    {
+
+        UIController.instance.tlPanel.SetActive(false);
+        UIController.instance.trPanel.SetActive(false);
+        UIController.instance.rPanel.SetActive(false);
+        UIController.instance.brPanel.SetActive(false);
+        UIController.instance.blPanel.SetActive(false);
+        UIController.instance.lPanel.SetActive(false);
+    }
 }
