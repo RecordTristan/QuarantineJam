@@ -46,6 +46,7 @@ public class DevilController : CharacterController
     private bool _waitCoffe = false;
     private bool _waitJournal = false;
     private bool _eventFailed = false;
+    private bool _alreadyActivate = false;
 
     public Animation animHappenDevil;
 
@@ -64,12 +65,16 @@ public class DevilController : CharacterController
             return;
         if (transform.position.x > _xValue)
         {
+            anim.SetBool("Sit", false);
+
             anim.SetBool("Walk", true);
             float scale = Mathf.Abs(display.transform.localScale.x);
             display.transform.localScale = new Vector3(scale,scale,scale);
         }
         else if (transform.position.x < _xValue)
         {
+            anim.SetBool("Sit", false);
+
             anim.SetBool("Walk", true);
             float scale = Mathf.Abs(display.transform.localScale.x);
             display.transform.localScale = new Vector3(-scale, scale, scale);
@@ -174,6 +179,7 @@ public class DevilController : CharacterController
     private IEnumerator MakeAction()
     {
         canMove = false;
+        anim.SetBool("Sit", true);
 
         yield return new WaitForSeconds(timeActionRoom);
         switch (Random.Range(0, 2))
@@ -198,6 +204,7 @@ public class DevilController : CharacterController
         _waitCoffe = false;
         _waitJournal = false;
         _eventFailed = false;
+        _alreadyActivate = false;
         //random temps event
         Event();
         yield return new WaitForSeconds(timeActionEvent);
@@ -239,6 +246,7 @@ public class DevilController : CharacterController
             return;
         SoundController.instance.PlaySFX(callDevil);
         CameraManager2D.instance.ShakeCam(amplifyCall, timeCall);
+        anim.SetTrigger("Call");
         effectCall.Play();
 
         buble.SetActive(true);
@@ -263,14 +271,21 @@ public class DevilController : CharacterController
     public void OnTriggerStay2D(Collider2D other)
     {
 
-        if (_waitCoffe && other.tag == "Coffee")
+        if (_waitCoffe && other.tag == "Coffee" && !_alreadyActivate)
         {
+            buble.SetActive(false);
+            CameraManager2D.instance.OutScreen();
             _coffeGood = true;
+            _alreadyActivate = true;
         }
         
-        if (_waitJournal && other.tag == "NewsPaper")
+        if (_waitJournal && other.tag == "NewsPaper" && !_alreadyActivate)
         {
+            buble.SetActive(false);
+            CameraManager2D.instance.OutScreen();
             _journalGood = true;
+            anim.SetTrigger("NewsPaper");
+            _alreadyActivate = true;
         }
     }
 

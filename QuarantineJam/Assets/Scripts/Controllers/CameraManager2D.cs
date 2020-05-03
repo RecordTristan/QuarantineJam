@@ -62,7 +62,7 @@ public class CameraManager2D : MonoBehaviour
     }
     public void DontFocusOnThisCam(GameObject target)
     {
-        if(target == _targetList[_targetList.Count-1])
+        if(target == _targetList[_targetList.Count-1] && _targetList.Count > 1)
         {
             _anim.Kill();
             _targetList.Remove(target);
