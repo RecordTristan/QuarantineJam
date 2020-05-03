@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TypeMusic
+{
+    HUD,
+    Game,
+    End
+}
 public class SoundController : MonoBehaviour
 {
     public static SoundController instance;
@@ -11,6 +17,7 @@ public class SoundController : MonoBehaviour
 
     public AudioClip musicHUD;
     public AudioClip musicGame;
+    public AudioClip musicEnd;
 
     public float maxVolume = 0.5f;
     private int _currentAudio = 0;
@@ -21,8 +28,6 @@ public class SoundController : MonoBehaviour
         else instance = this;
 
         DontDestroyOnLoad(gameObject);
-
-        PlayMusic(musicGame);
     }
     // Update is called once per frame
     void Update()
@@ -74,5 +79,21 @@ public class SoundController : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(0, sfx.Length);
         sfxSource.PlayOneShot(sfx[rand]);
+    }
+
+    public void PlayTypeMusic(TypeMusic type)
+    {
+        switch (type)
+        {
+            case TypeMusic.End:
+                PlayMusic(musicEnd);
+                break;
+            case TypeMusic.Game:
+                PlayMusic(musicGame);
+                break;
+            case TypeMusic.HUD:
+                PlayMusic(musicHUD);
+                break;
+        }
     }
 }

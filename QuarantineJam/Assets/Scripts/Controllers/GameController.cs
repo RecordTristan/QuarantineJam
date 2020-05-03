@@ -58,6 +58,16 @@ public class GameController : MonoBehaviour
 
     public void GetRandomObjects()
     {
+        int difficulty = PlayerPrefs.GetInt("Difficulty",0);
+        if (difficulty < 3)
+        {
+            nbrObjectsToRecup = GameDesigner.instance.difficulty[difficulty];
+        }
+        else
+        {
+            nbrObjectsToRecup = UnityEngine.Random.Range(2, 7);
+        }
+
         List<int> rands = new List<int>();
         while (rands.Count < nbrObjectsToRecup )
         {

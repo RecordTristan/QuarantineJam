@@ -121,6 +121,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &261431765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2805180402015359183, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851077365311247773, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.30279392
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6836882
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -47.432938
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340628714266871931, guid: 7e9c24e1db2138340ab835e5d257cbee,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e9c24e1db2138340ab835e5d257cbee, type: 3}
 --- !u!1 &515577860
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +749,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2020043861}
+        m_MethodName: SetDifficulty
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1318460439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +881,17 @@ MonoBehaviour:
       - m_Target: {fileID: 2020043861}
         m_MethodName: PlayGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2020043861}
+        m_MethodName: SetDifficulty
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -924,6 +1025,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2020043861}
+        m_MethodName: SetDifficulty
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1413,6 +1525,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2020043861}
+        m_MethodName: SetDifficulty
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2008862357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1584,7 @@ GameObject:
   - component: {fileID: 2020043860}
   - component: {fileID: 2020043859}
   - component: {fileID: 2020043861}
+  - component: {fileID: 2020043862}
   m_Layer: 5
   m_Name: Backround
   m_TagString: Untagged
@@ -1534,3 +1658,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1484234296}
   eventSystem: {fileID: 673245895}
+--- !u!114 &2020043862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020043857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d8fbdf9e5202b43a396f924dcd8cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0

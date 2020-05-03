@@ -1065,6 +1065,8 @@ GameObject:
   - component: {fileID: 1037243340}
   - component: {fileID: 1037243339}
   - component: {fileID: 1037243341}
+  - component: {fileID: 1037243342}
+  - component: {fileID: 1037243343}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1153,6 +1155,32 @@ MonoBehaviour:
   - -1
   - 0.8
   - 4.2
+--- !u!114 &1037243342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037243336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78c1e2cbae87ea4f891ef8fba8d7d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 020000000400000006000000
+--- !u!114 &1037243343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037243336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d8fbdf9e5202b43a396f924dcd8cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &1297419278
 GameObject:
   m_ObjectHideFlags: 0
@@ -7454,7 +7482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923040226}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 12.96, y: -1.76, z: 0}
+  m_LocalPosition: {x: 19.62, y: -6.95, z: 0}
   m_LocalScale: {x: 1.4492754, y: 1.4492754, z: 1.4492754}
   m_Children: []
   m_Father: {fileID: 1010961587}
@@ -8158,7 +8186,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: -57.9, z: 0}
+    m_Rotation: {x: 0, y: -30.64, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0

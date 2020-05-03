@@ -32,4 +32,8 @@ public class MenuPause : MonoBehaviour
         eventSystem.SetSelectedGameObject(null);
         eventSystem.SetSelectedGameObject(button);
     }
+    public void SetDifficulty(int difficulty)
+    {
+        PlayerPrefs.SetInt("Difficulty", difficulty);
+    }
 }
