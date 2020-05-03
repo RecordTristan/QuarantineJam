@@ -35,7 +35,7 @@ public class GrabObject : MonoBehaviour
         _anim = DOTween.Sequence();
         if (randomWeight)
         {
-            weight = UnityEngine.Random.Range(1f, 5f);
+            weight = UnityEngine.Random.Range(1f, 3f);
         }
     }
 
