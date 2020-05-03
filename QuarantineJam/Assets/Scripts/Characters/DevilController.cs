@@ -16,6 +16,14 @@ public class DevilController : CharacterController
     private Room _objectiveRoom;
     private Vector3 _targetPosition;
 
+    [Header("ShakeStep")]
+    public float amplifyStep = 0.1f;
+    public float timeStep = 0.1f;
+
+    [Header("ShakeCall")]
+    public float amplifyCall = 2.5f;
+    public float timeCall = 0.1f;
+
     [Header("Wait Time")]
     public float timeToUseStair;
     public float timeActionRoom;
@@ -191,6 +199,7 @@ public class DevilController : CharacterController
         {
             Debug.Log("Event Win");
             _objectiveRoom = null;
+            yield return new WaitForSeconds(timeActionEvent);
         }
         else
         {
@@ -200,9 +209,7 @@ public class DevilController : CharacterController
             _objectiveRoom = HomeController.instance.GetNearRoom(GameController.instance.player.GetCurrentRoom());
             _targetPosition = Vector3.zero;
             _stairUse = 0;
-            Debug.Log(_objectiveRoom.name);
         }
-        yield return new WaitForSeconds(timeActionEvent);
         canMove = true;
         _eventIsReady = true;
         //_objectiveEvent = null;
@@ -222,6 +229,7 @@ public class DevilController : CharacterController
         if (_waitCoffe || _waitJournal)
             return;
         SoundController.instance.PlaySFX(callDevil);
+        CameraManager2D.instance.ShakeCam(amplifyCall, timeCall);
         effectCall.Play();
         switch (Random.Range(0, 2))
         {
@@ -251,5 +259,11 @@ public class DevilController : CharacterController
             _journalGood = true;
         }
     }
-    
+
+    public override void SoundStep()
+    {
+        base.SoundStep();
+        CameraManager2D.instance.ShakeCam(amplifyStep, timeStep);
+    }
+
 }

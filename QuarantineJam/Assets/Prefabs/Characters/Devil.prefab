@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3160764951110434751}
   - component: {fileID: 3160764951110434736}
   - component: {fileID: 3331640935227144947}
+  - component: {fileID: 8864227258795869186}
   m_Layer: 0
   m_Name: Display
   m_TagString: Untagged
@@ -102,6 +103,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8864227258795869186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160764951110434750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7c6e10722e2c043a036c817256f3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 6962710740653276311}
 --- !u!1 &3160764951387236764
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,13 +220,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8ea11fe2fed8384499db947d8b8b26dc, type: 3}
   - {fileID: 8300000, guid: d2e6fa8dbe648bb479befd9d7d79775c, type: 3}
   callDevil: {fileID: 8300000, guid: 69e5b4a015928da4b88c9e8947aef7b2, type: 3}
-  distanceTarget: 0.2
+  distanceTarget: 0.5
   effectAngry: {fileID: 8151018275849107436}
   effectCall: {fileID: 4803014240936345880}
-  timeToUseStair: 0
-  timeActionRoom: 0
-  timeActionEvent: 0
-  timeToHappenDevil: 0
+  amplifyStep: 1
+  timeStep: 0.1
+  amplifyCall: 10
+  timeCall: 1
+  timeToUseStair: 1
+  timeActionRoom: 4
+  timeActionEvent: 15
+  timeToHappenDevil: 3
   animHappenDevil: {fileID: 0}
 --- !u!58 &5010752651793711823
 CircleCollider2D:
