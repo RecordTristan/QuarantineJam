@@ -50,8 +50,18 @@ public class CharacterController : MonoBehaviour
     {
         if (currentRoom.Count > 0)
         {
-            currentLevel = currentRoom[currentRoom.Count - 1].level;
-            return currentRoom[currentRoom.Count - 1];
+            float dist = 1000;
+            int index = -1;
+            for (int i = 0; i < currentRoom.Count; i++)
+            {
+                if (Vector3.Distance(currentRoom[i].transform.position, transform.position) < dist)
+                {
+                    dist = Vector3.Distance(currentRoom[i].transform.position, transform.position);
+                    index = i;
+                }
+            }
+            currentLevel = currentRoom[index].level;
+            return currentRoom[index];
         }
         return null;
     }
