@@ -1140,6 +1140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04198c6a3a36414182dda073680bc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstRoom: {fileID: 1799332941}
   rooms: []
   stairsHouse: []
 --- !u!114 &1037243341
@@ -1648,6 +1649,11 @@ PrefabInstance:
       propertyPath: nameGrabObject
       value: Suitcase
       objectReference: {fileID: 0}
+    - target: {fileID: 4475319352303467708, guid: fe8f1c6c1a61d4740bceaa63ba94f109,
+        type: 3}
+      propertyPath: effectItem
+      value: 
+      objectReference: {fileID: 1500711191}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe8f1c6c1a61d4740bceaa63ba94f109, type: 3}
 --- !u!114 &1448201707 stripped
@@ -1751,6 +1757,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a675a83ba466e0419f5fb9c5afda41d, type: 3}
+--- !u!198 &1500711191 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5783830016607899770, guid: fe8f1c6c1a61d4740bceaa63ba94f109,
+    type: 3}
+  m_PrefabInstance: {fileID: 1427468018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1505019061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2749,6 +2761,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f31780eea05034a8f736bba9c00496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1799332941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8047443662162608162, guid: b6c089f36b104094cb1b2d5be66d0cba,
+    type: 3}
+  m_PrefabInstance: {fileID: 315373641167718097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45908b4abd5c4e142afe190d0a8bb253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1986494675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3449,7 +3473,7 @@ PrefabInstance:
     - target: {fileID: 3160764951387236766, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.06
+      value: -13.85
       objectReference: {fileID: 0}
     - target: {fileID: 3160764951387236766, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}

@@ -36,6 +36,7 @@ public class DevilController : CharacterController
     public Animation animHappenDevil;
 
     private float _xValue;
+    private bool _isHere = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,8 @@ public class DevilController : CharacterController
 
     void Update()
     {
+        if (!_isHere)
+            return;
         if (transform.position.x > _xValue)
         {
             anim.SetBool("Walk", true);
@@ -209,7 +212,8 @@ public class DevilController : CharacterController
     private IEnumerator HappenDevil()
     {
         yield return new WaitForSeconds(timeToHappenDevil);
-        animHappenDevil.Play();
+        anim.SetBool("Walk", true);
+        transform.DOMoveX(HomeController.instance.firstRoom.transform.position.x, 4).OnComplete(()=> _isHere = true);
         yield break;
     }
 
