@@ -50,14 +50,17 @@ public class CharacterController : MonoBehaviour
     {
         if (currentRoom.Count > 0)
         {
+            currentLevel = currentRoom[currentRoom.Count - 1].level;
             return currentRoom[currentRoom.Count - 1];
         }
         return null;
     }
     public void SetCurrentRoom(Room room)
     {
-        currentLevel = room.level;
-        currentRoom.Add(room);
+        if (!currentRoom.Contains(room))
+        {
+            currentRoom.Add(room);
+        }
     }
     public void RemoveRoom(Room room)
     {

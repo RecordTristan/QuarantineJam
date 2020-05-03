@@ -3389,7 +3389,12 @@ PrefabInstance:
     - target: {fileID: 3160764951387236765, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.3501889
+      value: 0.10245842
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160764951387236765, guid: c5df76a0939c6c6409aac75f2a5d4772,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.18756959
       objectReference: {fileID: 0}
     - target: {fileID: 3160764951387236766, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}
