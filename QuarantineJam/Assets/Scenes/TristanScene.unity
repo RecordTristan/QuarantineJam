@@ -1004,6 +1004,7 @@ MonoBehaviour:
   winItems: []
   nbrObjectsToRecup: 3
   isEnd: 0
+  score: 0
   gameOver: {fileID: 8300000, guid: 167c96838fc26c7449b9c996fb398f0c, type: 3}
 --- !u!4 &1037243338
 Transform:
