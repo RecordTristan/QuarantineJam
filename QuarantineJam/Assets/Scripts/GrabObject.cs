@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class GrabObject : MonoBehaviour 
 {
@@ -23,6 +24,7 @@ public class GrabObject : MonoBehaviour
     public AudioClip putObject;
 
     private bool _take = false;
+    public bool randomWeight = false;
 
     void Awake()
     {
@@ -30,6 +32,10 @@ public class GrabObject : MonoBehaviour
         mat = display.material;
         colliderOfObject = GetComponent<BoxCollider2D>();
         _anim = DOTween.Sequence();
+        if (randomWeight)
+        {
+            weight = Random.Range(1f, 5f);
+        }
     }
 
     public virtual void UseObject(GrabObject actionGameObject)
