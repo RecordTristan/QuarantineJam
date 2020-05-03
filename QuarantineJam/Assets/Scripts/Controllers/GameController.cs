@@ -75,11 +75,11 @@ public class GameController : MonoBehaviour
     {
         if (winItems.Contains(grabObject))
         {
-            score += (int)grabObject.weight * 100;
+            score += (int)(grabObject.weight * 100);
         }
         else
         {
-            score += (int)grabObject.weight * 20;
+            score += (int)(grabObject.weight * 20);
         }
     }
 
