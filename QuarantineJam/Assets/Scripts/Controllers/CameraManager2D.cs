@@ -60,6 +60,10 @@ public class CameraManager2D : MonoBehaviour
             .Append(_cam.transform.DOMove(target.transform.position, speedChangeFocus ).SetEase(Ease.OutExpo));
         _positionStair = Vector3.zero;
     }
+    public void DontFocusOnThisCam(GameObject target)
+    {
+
+    }
 
     public void StairMovement(int level)
     {
