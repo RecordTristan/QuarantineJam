@@ -128,6 +128,7 @@ public class DevilController : CharacterController
 
         if (_canEvent)
         {
+
             if (_coffeGood || _journalGood)
             {
                 Debug.Log("Event Win");
@@ -197,6 +198,8 @@ public class DevilController : CharacterController
         _canEvent = true;
         yield return new WaitForSeconds(timeActionEvent);
         _eventFailed = true;
+        yield return new WaitForSeconds(timeActionEvent);
+
         _eventIsReady = true;
         //_objectiveEvent = null;
         yield break;
@@ -204,26 +207,27 @@ public class DevilController : CharacterController
 
     private IEnumerator HappenDevil()
     {
-        
-
         yield return new WaitForSeconds(timeToHappenDevil);
         this.gameObject.SetActive(true);
-        animHappenDevil.Play();
+        //animHappenDevil?.Play();
         yield break;
     }
 
     public void Event()
     {
-       
+        if (_waitCoffe || _waitJournal)
+            return;
+
         switch (Random.Range(1, 2))
         {
             case 1:
                 _waitCoffe = true;
-                
+                Debug.Log("Go Coffee");
                 //bulle affichant le coffe 
                 break;
             case 2:
                 _waitJournal = true;
+                Debug.Log("Go Coffee");
 
                 //bulle affichant le journal
                 break;

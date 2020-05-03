@@ -21,7 +21,7 @@ public class PlayerController : CharacterController
     public float speedLevitation = 2;
     public Transform objectGrabPos;
     private Vector3 _basePoseGrab;
-    private GrabObject _grabObjectDetection;
+    private List<GrabObject> _grabObjectDetection = new List<GrabObject>();
     private GrabObject _currentGrab;
 
     [Header("DeplacementInStairs")]
@@ -94,15 +94,18 @@ public class PlayerController : CharacterController
 
         if (_currentGrab)
         {
-            _grabObjectDetection?.UseObject(_currentGrab);
+            GetObject()?.UseObject(_currentGrab);
             _currentGrab.Put(currentLevel);
             _currentGrab = null;
             speedMove = _baseSpeedMove;
         }
         else
         {
-            _currentGrab = _grabObjectDetection;
-            speedMove = _baseSpeedMove / _currentGrab.weight;
+            _currentGrab = GetObject();
+            if (_currentGrab)
+            {
+                speedMove = _baseSpeedMove / _currentGrab.weight;
+            }
         }
     }
 
@@ -123,7 +126,73 @@ public class PlayerController : CharacterController
     #region Object
     public void GiveObject(GrabObject grabObject)
     {
-        _grabObjectDetection = grabObject;
+        _grabObjectDetection.Add(grabObject);
+        float dist = 1000;
+        int index = -1;
+        for (int i = 0; i < _grabObjectDetection.Count; i++)
+        {
+            if (Vector3.Distance(_grabObjectDetection[i].transform.position, transform.position) < dist)
+            {
+                dist = Vector3.Distance(_grabObjectDetection[i].transform.position, transform.position);
+                index = i;
+            }
+            else
+            {
+                _grabObjectDetection[i].SetOutline(0);
+            }
+        }
+        if (index != -1)
+        {
+            _grabObjectDetection[index].SetOutline(0.02f);
+        }
+    }
+    public void RemoveObject(GrabObject grabObject)
+    {
+        _grabObjectDetection.Remove(grabObject);
+        float dist = 1000;
+        int index = -1;
+        for (int i = 0; i < _grabObjectDetection.Count; i++)
+        {
+            if (Vector3.Distance(_grabObjectDetection[i].transform.position, transform.position) < dist)
+            {
+                dist = Vector3.Distance(_grabObjectDetection[i].transform.position, transform.position);
+                index = i;
+            }
+            else
+            {
+                _grabObjectDetection[i].SetOutline(0);
+            }
+        }
+        if (index != -1)
+        {
+            _grabObjectDetection[index].SetOutline(0.02f);
+        }
+    }
+    public GrabObject GetObject()
+    {
+        float dist = 1000;
+        int index = -1;
+        for (int i = 0; i < _grabObjectDetection.Count; i++)
+        {
+            if (Vector3.Distance(_grabObjectDetection[i].transform.position, transform.position) < dist)
+            {
+                dist = Vector3.Distance(_grabObjectDetection[i].transform.position, transform.position);
+                index = i;
+            }
+            else
+            {
+                _grabObjectDetection[i].SetOutline(0);
+            }
+        }
+        if (index == -1)
+        {
+            return null;
+        }
+        else
+        {
+            _grabObjectDetection[index].SetOutline(0.02f);
+            return _grabObjectDetection[index];
+        }
     }
     public bool GrabOjbect()
     {

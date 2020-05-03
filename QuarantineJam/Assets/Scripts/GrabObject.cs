@@ -10,7 +10,7 @@ public class GrabObject : MonoBehaviour
     public float speedFollow = 2;
     public bool canBeRecup = true;
     public float weight;
-    private Material _mat;
+    protected Material mat;
 
     private Sequence _anim;
     protected BoxCollider2D colliderOfObject;
@@ -23,7 +23,7 @@ public class GrabObject : MonoBehaviour
 
     void Awake()
     {
-        _mat = GetComponent<SpriteRenderer>().material;
+        mat = GetComponent<SpriteRenderer>().material;
         colliderOfObject = GetComponent<BoxCollider2D>();
         _anim = DOTween.Sequence();
     }
@@ -44,7 +44,8 @@ public class GrabObject : MonoBehaviour
     {
         if (other.tag == "Player" && canBeRecup)
         {
-            GameController.instance.player.GiveObject(null);
+            GameController.instance.player.RemoveObject(this);
+            SetOutline(0);
         }
     }
 
@@ -71,5 +72,10 @@ public class GrabObject : MonoBehaviour
         _anim.Kill();
         _anim = DOTween.Sequence()
             .Append(transform.DOMoveY(LDController.instance.levelValue[level],0.3f).SetEase(Ease.OutExpo));
+    }
+
+    public void SetOutline(float value)
+    {
+        mat.SetFloat("_Outline", value);
     }
 }

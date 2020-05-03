@@ -361,11 +361,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688164174896630083, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9d5af1b87b4f8f94aae84c2bff7347e7, type: 2}
-    - target: {fileID: 1688164174896630083, guid: ebd572c0434659c40baae1d070ce8a69,
-        type: 3}
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
@@ -858,6 +853,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valise
       objectReference: {fileID: 0}
+    - target: {fileID: 4475319352303467586, guid: fe8f1c6c1a61d4740bceaa63ba94f109,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d5af1b87b4f8f94aae84c2bff7347e7, type: 2}
     - target: {fileID: 4475319352303467587, guid: fe8f1c6c1a61d4740bceaa63ba94f109,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2210,6 +2210,16 @@ PrefabInstance:
         type: 3}
       propertyPath: timeActionRoom
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962710740653276311, guid: c5df76a0939c6c6409aac75f2a5d4772,
+        type: 3}
+      propertyPath: timeToHappenDevil
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962710740653276311, guid: c5df76a0939c6c6409aac75f2a5d4772,
+        type: 3}
+      propertyPath: timeActionEvent
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5df76a0939c6c6409aac75f2a5d4772, type: 3}
