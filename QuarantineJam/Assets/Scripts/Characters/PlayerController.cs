@@ -109,6 +109,21 @@ public class PlayerController : CharacterController
                 speedMove = _baseSpeedMove / _currentGrab.weight;
             }
         }
+        if (_grabObjectDetection.Contains(ObjectManager.instance.suitcase))
+        {
+            if (GetObjectInHand() != null && GetObjectInHand() != ObjectManager.instance.suitcase)
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", true);
+            }
+            else
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", false);
+            }
+        }
+        else
+        {
+            ObjectManager.instance.suitcase.anim.SetBool("Open", false);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
