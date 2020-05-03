@@ -6478,21 +6478,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 219815914992538532, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 219815914992538532, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 219815914992538532, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
     - target: {fileID: 219815914992538534, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8367,7 +8352,7 @@ PrefabInstance:
     - target: {fileID: 3224873905840359463, guid: 1a675a83ba466e0419f5fb9c5afda41d,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5746546154446165857, guid: 1a675a83ba466e0419f5fb9c5afda41d,
         type: 3}
