@@ -1929,7 +1929,7 @@ PrefabInstance:
     - target: {fileID: 4435497960095745468, guid: 7e9c24e1db2138340ab835e5d257cbee,
         type: 3}
       propertyPath: maxVolume
-      value: 0.02
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7498746982327726718, guid: 7e9c24e1db2138340ab835e5d257cbee,
         type: 3}
