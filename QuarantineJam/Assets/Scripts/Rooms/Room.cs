@@ -9,6 +9,8 @@ public class Room : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.isTrigger)
+            return;
         if (other.tag == "Player")
         {
             GameController.instance.player.SetCurrentRoom(this);
@@ -21,6 +23,8 @@ public class Room : MonoBehaviour
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
+        if (other.isTrigger)
+            return;
         if (other.tag == "Player")
         {
             GameController.instance.player.RemoveRoom(this);

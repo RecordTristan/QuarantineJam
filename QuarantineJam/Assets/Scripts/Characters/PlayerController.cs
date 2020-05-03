@@ -87,7 +87,8 @@ public class PlayerController : CharacterController
     private void Interact()
     {
         _currentGrab?.Take(objectGrabPos);
-
+        if (_startVertical)
+            return;
         if (!Input.GetButtonDown("Interact"))
             return;
 
@@ -99,14 +100,31 @@ public class PlayerController : CharacterController
             _currentGrab.Put(currentLevel);
             _currentGrab = null;
             speedMove = _baseSpeedMove;
+            anim.speed = 1;
         }
         else
         {
             _currentGrab = GetObject();
             if (_currentGrab)
             {
+                anim.speed = 1 / _currentGrab.weight;
                 speedMove = _baseSpeedMove / _currentGrab.weight;
             }
+        }
+        if (_grabObjectDetection.Contains(ObjectManager.instance.suitcase))
+        {
+            if (GetObjectInHand() != null && GetObjectInHand() != ObjectManager.instance.suitcase)
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", true);
+            }
+            else
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", false);
+            }
+        }
+        else
+        {
+            ObjectManager.instance.suitcase.anim.SetBool("Open", false);
         }
     }
 
@@ -159,6 +177,21 @@ public class PlayerController : CharacterController
                 _grabObjectDetection[i].SetOutline(0);
             }
         }
+        if (_grabObjectDetection.Contains(ObjectManager.instance.suitcase))
+        {
+            if (GetObjectInHand() != null)
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", true);
+            }
+            else
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", false);
+            }
+        }
+        else
+        {
+            ObjectManager.instance.suitcase.anim.SetBool("Open", false);
+        }
         if (index != -1)
         {
             _grabObjectDetection[index].SetOutline(0.02f);
@@ -180,6 +213,21 @@ public class PlayerController : CharacterController
             {
                 _grabObjectDetection[i].SetOutline(0);
             }
+        }
+        if (_grabObjectDetection.Contains(ObjectManager.instance.suitcase))
+        {
+            if (GetObjectInHand() != null)
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", true);
+            }
+            else
+            {
+                ObjectManager.instance.suitcase.anim.SetBool("Open", false);
+            }
+        }
+        else
+        {
+            ObjectManager.instance.suitcase.anim.SetBool("Open", false);
         }
         if (index != -1)
         {

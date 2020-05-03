@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class GrabObject : MonoBehaviour 
 {
+    public SpriteRenderer display;
     public string nameGrabObject;
     public float speedFollow = 2;
     public bool canBeRecup = true;
@@ -25,7 +26,8 @@ public class GrabObject : MonoBehaviour
 
     void Awake()
     {
-        mat = GetComponentInChildren<SpriteRenderer>().material;
+        display = GetComponentInChildren<SpriteRenderer>();
+        mat = display.material;
         colliderOfObject = GetComponent<BoxCollider2D>();
         _anim = DOTween.Sequence();
     }
@@ -71,6 +73,10 @@ public class GrabObject : MonoBehaviour
             SoundController.instance.PlaySFX(putObject);
         }
         colliderOfObject.enabled = true;
+
+        if (!canBeSelect)
+            return;
+
         _anim.Kill();
         _anim = DOTween.Sequence()
             .Append(transform.DOMoveY(LDController.instance.levelValue[level],0.3f).SetEase(Ease.OutExpo));

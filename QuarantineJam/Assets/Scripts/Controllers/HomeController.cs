@@ -8,6 +8,7 @@ public class HomeController : MonoBehaviour
     public static HomeController instance;
 
     [Header("House")]
+    public Room firstRoom;
     public Room[] rooms;
     public Stairs[] stairsHouse;
 
