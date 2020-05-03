@@ -32,6 +32,12 @@ public class DevilController : CharacterController
 
     private int _stairUse = 0;
 
+    [Header("Event")]
+    public GameObject buble;
+    public SpriteRenderer displayBuble;
+    public Sprite coffee;
+    public Sprite newsPaper;
+
     private Event _objectiveEvent;
     private bool _canEvent = false;
     private bool _eventIsReady = true;
@@ -195,6 +201,8 @@ public class DevilController : CharacterController
         //random temps event
         Event();
         yield return new WaitForSeconds(timeActionEvent);
+        UIController.instance.EndEvent();
+        buble.SetActive(false);
         if (_coffeGood || _journalGood)
         {
             Debug.Log("Event Win");
@@ -231,19 +239,24 @@ public class DevilController : CharacterController
         SoundController.instance.PlaySFX(callDevil);
         CameraManager2D.instance.ShakeCam(amplifyCall, timeCall);
         effectCall.Play();
+
+        buble.SetActive(true);
         switch (Random.Range(0, 2))
         {
             case 0:
                 _waitCoffe = true;
                 Debug.Log("Go Coffee");
+                displayBuble.sprite = coffee;
                 //bulle affichant le coffe 
                 break;
             case 1:
                 _waitJournal = true;
+                displayBuble.sprite = newsPaper;
                 Debug.Log("Go Journal");
                 //bulle affichant le journal
                 break;
         }
+        UIController.instance.SetPanel(displayBuble.sprite);
     }
 
     public void OnTriggerStay2D(Collider2D other)

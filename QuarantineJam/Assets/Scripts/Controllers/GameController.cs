@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
                 winItems.Add(ObjectManager.instance.GetInteractObject(rand));
             }
         }
-
+        UIController.instance.SetList(winItems);
     }
 
 }

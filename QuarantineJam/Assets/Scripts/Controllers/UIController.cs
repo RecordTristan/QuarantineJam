@@ -15,12 +15,32 @@ public class UIController : MonoBehaviour
     public RectTransform listPanel;
     public GameObject topListPanel;
     public GameObject botListPanel;
+
+    [Header("PanelDevil")]
+    public GameObject tlPanel;
+    public GameObject trPanel;
+    public GameObject rPanel;
+    public GameObject brPanel;
+    public GameObject blPanel;
+    public GameObject lPanel;
+
+    public Image[] panelImage;
+    private bool _eventActive;
+
     private bool _activeList = false;
 
     void Awake()
     {
         if (instance) Destroy(gameObject);
         else instance = this;
+    }
+
+    void Update()
+    {
+        if (_eventActive)
+        {
+            CameraManager2D.instance.ClampPositionToScreenPanel();
+        }
     }
 
     #region ListObject
@@ -62,6 +82,19 @@ public class UIController : MonoBehaviour
                 trailListObject[i].DOFillAmount(1, 0.5f);
             }
         }
+    }
+
+    public void SetPanel(Sprite sprite)
+    {
+        for (int i = 0; i < panelImage.Length; i++)
+        {
+            panelImage[i].sprite = sprite;
+        }
+        _eventActive = true;
+    }
+    public void EndEvent()
+    {
+        _eventActive = false;
     }
     #endregion
 }
