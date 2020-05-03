@@ -183,7 +183,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: 9c70ff5d195738348bd2c793ea172be8, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -446,7 +446,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: 8b15408dd6f822b4e8debfd31b083807, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -621,7 +621,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: f42c1ca78948c724985a06964e8bdb76, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -811,7 +811,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: dc3d0978fb635364ebcfffd975e9b329, type: 3}
+      objectReference: {fileID: 8300000, guid: b611be9dc9e798743b7a346bcffed044, type: 3}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1183,7 +1183,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: b4a4d1cd723f76242ab150e736e07699, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -1390,7 +1390,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: 6dc964d7c1d15ed4bb2e03d0678fa39d, type: 3}
+      objectReference: {fileID: 8300000, guid: c0cb84e19760e144da0b846849bb6023, type: 3}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1777,7 +1777,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: 7c6cce8cde571064a8c471e3fd652e3b, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -1949,7 +1949,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: f3cd5bd545855fa49be03f517f729e18, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -2342,7 +2342,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: ce9df50c5edc58d4aabf3c724a3f024f, type: 3}
+      objectReference: {fileID: 8300000, guid: dc3d0978fb635364ebcfffd975e9b329, type: 3}
     - target: {fileID: 1688164174896630081, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: nameGrabObject
@@ -2587,7 +2587,7 @@ PrefabInstance:
         type: 3}
       propertyPath: takeObject
       value: 
-      objectReference: {fileID: 8300000, guid: b611be9dc9e798743b7a346bcffed044, type: 3}
+      objectReference: {fileID: 8300000, guid: 6dc964d7c1d15ed4bb2e03d0678fa39d, type: 3}
     - target: {fileID: 1688164174896630082, guid: ebd572c0434659c40baae1d070ce8a69,
         type: 3}
       propertyPath: m_LocalPosition.x
