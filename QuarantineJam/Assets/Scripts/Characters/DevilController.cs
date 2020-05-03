@@ -10,6 +10,7 @@ public class DevilController : CharacterController
 
     [Header("Settings")]
     public float distanceTarget = 0.2f;
+    public ParticleSystem effectAngry;
 
     private Room _objectiveRoom;
     private Vector3 _targetPosition;
@@ -191,6 +192,7 @@ public class DevilController : CharacterController
         {
             //defeat
             Debug.Log("Event Defeat");
+            effectAngry.Play();
             _objectiveRoom = HomeController.instance.GetNearRoom(GameController.instance.player.GetCurrentRoom());
             _targetPosition = Vector3.zero;
             _stairUse = 0;
