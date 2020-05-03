@@ -26,7 +26,7 @@ public class ChangeAreaFocusCam : MonoBehaviour
     {
         if (collider2D.tag == "Player")
         {
-            CameraManager2D.instance.FocusOnThisCam(camToFocus);
+            CameraManager2D.instance.DontFocusOnThisCam(camToFocus);
         }
     }
 }

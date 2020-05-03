@@ -8,6 +8,7 @@ public class CameraManager2D : MonoBehaviour
     public static CameraManager2D instance;
 
     private GameObject _groupCam;
+    private List<GameObject> _targetList = new List<GameObject>();
 
     [Header("Shake")]
     public float amplify = 1;
@@ -46,23 +47,32 @@ public class CameraManager2D : MonoBehaviour
             _groupCam.transform.position = _placementGroup;
             _groupCam.transform.position += new Vector3(posX*Time.deltaTime, posY*Time.deltaTime, 0);
         }
-
-        if (_positionStair == Vector3.zero)
-            return;
     }
 
     public void FocusOnThisCam(GameObject target)
     {
         _anim.Kill();
         _targetPos = target.transform.position;
-
+        if (!_targetList.Contains(target))
+        {
+            _targetList.Add(target);
+        }
         _anim = DOTween.Sequence()
             .Append(_cam.transform.DOMove(target.transform.position, speedChangeFocus ).SetEase(Ease.OutExpo));
-        _positionStair = Vector3.zero;
     }
     public void DontFocusOnThisCam(GameObject target)
     {
-
+        if(target == _targetList[_targetList.Count-1])
+        {
+            _anim.Kill();
+            _targetList.Remove(target);
+            _anim = DOTween.Sequence()
+            .Append(_cam.transform.DOMove(_targetList[_targetList.Count - 1].transform.position, speedChangeFocus).SetEase(Ease.OutExpo));
+        }
+        else
+        {
+            _targetList.Remove(target);
+        }
     }
 
     public void StairMovement(int level)
