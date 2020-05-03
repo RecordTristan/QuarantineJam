@@ -100,12 +100,14 @@ public class PlayerController : CharacterController
             _currentGrab.Put(currentLevel);
             _currentGrab = null;
             speedMove = _baseSpeedMove;
+            anim.speed = 1;
         }
         else
         {
             _currentGrab = GetObject();
             if (_currentGrab)
             {
+                anim.speed = 1 / _currentGrab.weight;
                 speedMove = _baseSpeedMove / _currentGrab.weight;
             }
         }
