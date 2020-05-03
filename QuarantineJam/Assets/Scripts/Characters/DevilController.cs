@@ -177,7 +177,6 @@ public class DevilController : CharacterController
     private IEnumerator HappenDevil()
     {
         yield return new WaitForSeconds(timeToHappenDevil);
-        this.gameObject.SetActive(true);
         animHappenDevil.Play();
         yield break;
     }
