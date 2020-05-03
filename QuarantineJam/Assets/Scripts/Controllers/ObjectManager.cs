@@ -21,7 +21,10 @@ public class ObjectManager : MonoBehaviour
         {
             if (!(objectsIG[i] as Suitcase))
             {
-                AddObject(objectsIG[i]);
+                if (objectsIG[i].canBeSelect)
+                {
+                    AddObject(objectsIG[i]);
+                }
             }
             else
             {

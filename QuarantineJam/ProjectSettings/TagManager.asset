@@ -6,6 +6,9 @@ TagManager:
   tags:
   - GrabItem
   - Devil
+  - Item
+  - Coffee
+  - NewsPaper
   layers:
   - Default
   - TransparentFX

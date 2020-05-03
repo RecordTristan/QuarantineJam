@@ -15,6 +15,8 @@ public class GrabObject : MonoBehaviour
     private Sequence _anim;
     protected BoxCollider2D colliderOfObject;
 
+    public bool canBeSelect = true;
+
     [Header("Sounds")]
     public AudioClip takeObject;
     public AudioClip putObject;

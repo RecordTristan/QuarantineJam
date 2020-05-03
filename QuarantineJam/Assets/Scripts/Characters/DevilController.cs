@@ -190,6 +190,7 @@ public class DevilController : CharacterController
         {
             //defeat
             Debug.Log("Event Defeat");
+            _objectiveRoom = GameController.instance.player.GetCurrentRoom();
         }
         yield return new WaitForSeconds(timeActionEvent);
 
@@ -229,12 +230,13 @@ public class DevilController : CharacterController
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (_waitCoffe && other.tag == "Coffe")
+
+        if (_waitCoffe && other.tag == "Coffee")
         {
             _coffeGood = true;
         }
         
-        if (_waitJournal && other.tag == "Journal")
+        if (_waitJournal && other.tag == "NewsPaper")
         {
             _journalGood = true;
         }

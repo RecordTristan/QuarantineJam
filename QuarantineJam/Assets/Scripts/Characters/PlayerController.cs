@@ -198,6 +198,10 @@ public class PlayerController : CharacterController
     {
         return _currentGrab ? true : false;
     }
+    public GrabObject GetObjectInHand()
+    {
+        return _currentGrab;
+    }
     public void MoveObjectPosition()
     {
         objectGrabPos.transform.localPosition = new Vector3(objectGrabPos.transform.localPosition.x, _basePoseGrab.y + Mathf.Sin(Time.time * speedLevitation)* limitLevitation, _basePoseGrab.z);

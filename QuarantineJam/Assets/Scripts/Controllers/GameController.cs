@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
 
     public void CheckDefeat()
     {
-        if (player.GrabOjbect() && player.GetCurrentRoom() == devil.GetCurrentRoom() && !isEnd)
+        if (player.GrabOjbect() && player.GetObjectInHand().canBeSelect && player.GetCurrentRoom() == devil.GetCurrentRoom() && !isEnd)
         {
             Debug.Log("Loose");
             player.Loose();
