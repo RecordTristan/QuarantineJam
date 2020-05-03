@@ -12,6 +12,7 @@ public class GrabObject : MonoBehaviour
     public float speedFollow = 2;
     public bool canBeRecup = true;
     public float weight;
+    public bool randomWeight = false;
     protected Material mat;
 
     private Sequence _anim;
@@ -24,7 +25,7 @@ public class GrabObject : MonoBehaviour
     public AudioClip putObject;
 
     private bool _take = false;
-    public bool randomWeight = false;
+    
 
     void Awake()
     {
