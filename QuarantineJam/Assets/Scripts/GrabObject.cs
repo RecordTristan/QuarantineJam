@@ -25,7 +25,7 @@ public class GrabObject : MonoBehaviour
 
     void Awake()
     {
-        mat = GetComponent<SpriteRenderer>().material;
+        mat = GetComponentInChildren<SpriteRenderer>().material;
         colliderOfObject = GetComponent<BoxCollider2D>();
         _anim = DOTween.Sequence();
     }

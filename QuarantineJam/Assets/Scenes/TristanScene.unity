@@ -3484,7 +3484,7 @@ PrefabInstance:
     - target: {fileID: 6962710740653276311, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}
       propertyPath: timeActionEvent
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5df76a0939c6c6409aac75f2a5d4772, type: 3}

@@ -122,13 +122,6 @@ public class DevilController : CharacterController
             _targetPosition = Vector3.zero;
             _stairUse = 0;
         }
-
-
-        if (_eventIsReady)
-        {
-            StartCoroutine(MakeEvent()); 
-        }
-
     }
 
     private IEnumerator UseStair()
@@ -164,9 +157,17 @@ public class DevilController : CharacterController
         canMove = false;
 
         yield return new WaitForSeconds(timeActionRoom);
-        canMove = true;
-
-        _objectiveRoom = null;
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                yield return MakeEvent();
+                break;
+            case 1:
+                canMove = true;
+                _objectiveRoom = null;
+                break;
+        }
+        
         yield break;
     }
 
@@ -179,21 +180,24 @@ public class DevilController : CharacterController
         _waitJournal = false;
         _eventFailed = false;
         //random temps event
-        yield return new WaitForSeconds(timeActionEvent);
         Event();
         yield return new WaitForSeconds(timeActionEvent);
         if (_coffeGood || _journalGood)
         {
             Debug.Log("Event Win");
+            _objectiveRoom = null;
         }
         else
         {
             //defeat
             Debug.Log("Event Defeat");
-            _objectiveRoom = GameController.instance.player.GetCurrentRoom();
+            _objectiveRoom = HomeController.instance.GetNearRoom(GameController.instance.player.GetCurrentRoom());
+            _targetPosition = Vector3.zero;
+            _stairUse = 0;
+            Debug.Log(_objectiveRoom.name);
         }
         yield return new WaitForSeconds(timeActionEvent);
-
+        canMove = true;
         _eventIsReady = true;
         //_objectiveEvent = null;
         yield break;
@@ -213,14 +217,14 @@ public class DevilController : CharacterController
             return;
         SoundController.instance.PlaySFX(callDevil);
 
-        switch (Random.Range(1, 2))
+        switch (Random.Range(0, 2))
         {
-            case 1:
+            case 0:
                 _waitCoffe = true;
                 Debug.Log("Go Coffee");
                 //bulle affichant le coffe 
                 break;
-            case 2:
+            case 1:
                 _waitJournal = true;
                 Debug.Log("Go Journal");
                 //bulle affichant le journal
@@ -228,7 +232,7 @@ public class DevilController : CharacterController
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerStay2D(Collider2D other)
     {
 
         if (_waitCoffe && other.tag == "Coffee")

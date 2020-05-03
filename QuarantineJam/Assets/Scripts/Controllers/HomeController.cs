@@ -59,6 +59,22 @@ public class HomeController : MonoBehaviour
         return stairs[index];
     }
 
+    public Room GetNearRoom(Room room)
+    {
+        Room[] roomsAvailable = rooms.Where(r => !(r as Stairs) && r.level == room.level).ToArray();
+        float dist = 1000;
+        int index = 0;
+        for (int i = roomsAvailable.Length; i-- > 0;)
+        {
+            if (Vector3.Distance(roomsAvailable[i].transform.position, room.transform.position) < dist)
+            {
+                dist = Vector3.Distance(roomsAvailable[i].transform.position, room.transform.position);
+                index = i;
+            }
+        }
+        return roomsAvailable[index];
+    }
+
     public Room GetRandomRoom(DevilController devil)
     {
         Room[] roomsAvailable = rooms.Where(room => room != devil.GetCurrentRoom() && !(room as Stairs)).ToArray();
