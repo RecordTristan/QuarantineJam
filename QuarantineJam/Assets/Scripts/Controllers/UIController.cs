@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour
 {
@@ -27,10 +29,12 @@ public class UIController : MonoBehaviour
     public Image[] panelImage;
 
     [Header("Score")]
+    public GameObject endButton; 
     public GameObject endPanel;
     public GameObject winscore;
     public GameObject looseScore;
     public TextMeshProUGUI textScore;
+    public Vibration vibration;
 
     private bool _eventActive;
 
@@ -114,6 +118,7 @@ public class UIController : MonoBehaviour
         endPanel.SetActive(true);
         winscore.SetActive(true);
         looseScore.SetActive(false);
+        StartCoroutine(FocusEventSystem(endButton));
         DisplayScore();
     }
     public void Loose()
@@ -121,6 +126,7 @@ public class UIController : MonoBehaviour
         endPanel.SetActive(true);
         winscore.SetActive(false);
         looseScore.SetActive(true);
+        StartCoroutine(FocusEventSystem(endButton));
         DisplayScore();
     }
     public void DisplayScore()
@@ -128,7 +134,19 @@ public class UIController : MonoBehaviour
         DOTween.To(()=> _value, (x)=> {
             _value = x;
             textScore.text = _value.ToString();
-        }, GameController.instance.score, 2 );
+        }, GameController.instance.score, 2 ).OnComplete(()=> vibration.amplify = 0);
+    }
+    #endregion
+    #region MenuControl
+    public void LoadScene(string nameScene)
+    {
+        SceneManager.LoadScene(nameScene);
+    }
+    public IEnumerator FocusEventSystem(GameObject button)
+    {
+        yield return null;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(button);
     }
     #endregion
 }
