@@ -6200,12 +6200,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 219815913222813939, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: aca46b66f6d6a6c48b27612928d4fbb5,
-        type: 2}
-    - target: {fileID: 219815913222813939, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
-        type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 5502204452788221920, guid: aca46b66f6d6a6c48b27612928d4fbb5,
@@ -6729,11 +6723,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5046858960911737685, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 5128474058501099068, guid: 36de1a96c5a7b8c4d8d8cd13e1300282,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 200

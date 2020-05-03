@@ -79,6 +79,7 @@ public class UIController : MonoBehaviour
         {
             if (listObject[i].text == nameObject)
             {
+                trailListObject[i].gameObject.SetActive(true);
                 trailListObject[i].DOFillAmount(1, 0.5f);
             }
         }
