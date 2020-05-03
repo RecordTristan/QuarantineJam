@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     public List<GrabObject> winItems = new List<GrabObject>();
     public int nbrObjectsToRecup;
     public bool isEnd = false;
+    public int score;
+
 
     [Header("Sounds")]
     public AudioClip gameOver;
@@ -36,6 +38,7 @@ public class GameController : MonoBehaviour
             player.Loose();
             isEnd = true;
             SoundController.instance.PlaySFX(gameOver);
+            UIController.instance.Loose();
         }
     }
 
@@ -47,6 +50,7 @@ public class GameController : MonoBehaviour
         if (compareToListFinish.Count == winItems.Count)
         {
             player.Win();
+            UIController.instance.Win();
             Debug.Log("Win");
             //chekWin;
         }
@@ -65,6 +69,18 @@ public class GameController : MonoBehaviour
             }
         }
         UIController.instance.SetList(winItems);
+    }
+
+    public void AddObject(GrabObject grabObject)
+    {
+        if (winItems.Contains(grabObject))
+        {
+            score += (int)grabObject.weight * 100;
+        }
+        else
+        {
+            score += (int)grabObject.weight * 20;
+        }
     }
 
 }

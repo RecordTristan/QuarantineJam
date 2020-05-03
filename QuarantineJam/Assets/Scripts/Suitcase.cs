@@ -41,6 +41,7 @@ public class Suitcase : GrabObject
             {
                 weight = 1;
             }
+            GameController.instance.AddObject(actionGameObject);
             UIController.instance.ValidateObject(actionGameObject.nameGrabObject);
         }        
     }
