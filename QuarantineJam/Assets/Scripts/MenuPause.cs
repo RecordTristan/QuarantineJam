@@ -13,4 +13,8 @@ public class MenuPause : MonoBehaviour
     {
         Application.Quit();
     }
+    public void PlayCredit()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
 }
