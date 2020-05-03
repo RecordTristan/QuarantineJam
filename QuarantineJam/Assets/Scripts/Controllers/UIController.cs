@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     public GameObject brPanel;
     public GameObject blPanel;
     public GameObject lPanel;
+    public GameObject UIPause;
 
     public Image[] panelImage;
     private bool _eventActive;
@@ -44,6 +45,10 @@ public class UIController : MonoBehaviour
     }
 
     #region ListObject
+    public void ActivePause()
+    {
+        UIPause.SetActive(true);
+    }
     public void ActiveList()
     {
         if (_activeList)
