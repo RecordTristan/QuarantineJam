@@ -22,4 +22,11 @@ public class ChangeAreaFocusCam : MonoBehaviour
             CameraManager2D.instance.FocusOnThisCam(camToFocus);
         }
     }
+    public void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if (collider2D.tag == "Player")
+        {
+            CameraManager2D.instance.FocusOnThisCam(camToFocus);
+        }
+    }
 }
