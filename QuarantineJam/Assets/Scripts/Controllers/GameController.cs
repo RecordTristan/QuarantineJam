@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
         Debug.Log(compareToListFinish.Count+"   "+ winItems.Count);
         if (compareToListFinish.Count == winItems.Count)
         {
+            isEnd = true;
             player.Win();
             UIController.instance.Win();
             Debug.Log("Win");
