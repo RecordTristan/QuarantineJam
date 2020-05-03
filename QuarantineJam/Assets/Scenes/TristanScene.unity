@@ -551,6 +551,31 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebd572c0434659c40baae1d070ce8a69, type: 3}
+--- !u!1 &465893058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3593486159759697090, guid: ebd572c0434659c40baae1d070ce8a69,
+    type: 3}
+  m_PrefabInstance: {fileID: 552684804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &465893061
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465893058}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37b5946ff4a282a47a951835e14f4828, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &474512565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5746546154446165858, guid: 1a675a83ba466e0419f5fb9c5afda41d,
@@ -1882,6 +1907,31 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebd572c0434659c40baae1d070ce8a69, type: 3}
+--- !u!1 &1519999918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2014486280902754039, guid: fe8f1c6c1a61d4740bceaa63ba94f109,
+    type: 3}
+  m_PrefabInstance: {fileID: 1427468018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1519999921
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519999918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7a58432a4eddfa4a8a928d397ddb638, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1524484218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5746546154446165858, guid: 1a675a83ba466e0419f5fb9c5afda41d,
@@ -3484,7 +3534,7 @@ PrefabInstance:
     - target: {fileID: 6962710740653276311, guid: c5df76a0939c6c6409aac75f2a5d4772,
         type: 3}
       propertyPath: timeActionEvent
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5df76a0939c6c6409aac75f2a5d4772, type: 3}
