@@ -22,9 +22,6 @@ public class Suitcase : GrabObject
 
     public override void UseObject(GrabObject actionGameObject)
     {
-
-        
-
         if (!objets.Contains(actionGameObject) && actionGameObject != this && actionGameObject.canBeSelect)
         {
             effectItem.Play();
@@ -44,6 +41,7 @@ public class Suitcase : GrabObject
             {
                 weight = 1;
             }
+            UIController.instance.ValidateObject(actionGameObject.nameGrabObject);
         }        
     }
     

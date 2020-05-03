@@ -26,7 +26,7 @@ public class CharacterController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
-    public void SoundStep()
+    public virtual void SoundStep()
     {
         if (GetStairs())
         {

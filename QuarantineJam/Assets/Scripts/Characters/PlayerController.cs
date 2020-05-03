@@ -51,6 +51,10 @@ public class PlayerController : CharacterController
         DisplaceVertical();
         MoveObjectPosition();
 
+        if (Input.GetButtonDown("ActiveUI"))
+        {
+            UIController.instance.ActiveList();
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("TristanScene");

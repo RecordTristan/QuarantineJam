@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSound : MonoBehaviour
 {
     public CharacterController character;
-
+    
     void Awake()
     {
         character = GetComponentInParent<CharacterController>();
